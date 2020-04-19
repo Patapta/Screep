@@ -6,14 +6,19 @@ var roleHarvester = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
+        //寻找房间所有资源
+        var sources = creep.room.find(FIND_SOURCES);
+        console.log(creep.memory.getSource);
         //首次进入status未定义，赋值给他状态是0让他去取能量
         if(typeof creep.memory.status === "undefined"){
             creep.memory.status = false;
         }
         //状态为false则需要去取能量
 	    if(creep.memory.status == false) {
-            var sources = creep.room.find(FIND_SOURCES);
             if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
+                if(typeof creep.memory.getSource === "undefined" || creep.memory.getSource == "undefined"){
+                    creep.memory.getSource = sources[0];
+                }
                 creep.moveTo(sources[0], {visualizePathStyle: {stroke: '#ffffff'}});
             }
         }
@@ -35,7 +40,8 @@ var roleHarvester = {
         }
         //身上能量为0证明能量空了，把状态切换成去取能量
         if(creep.store[RESOURCE_ENERGY] == 0){
-            creep.memory.status = 0;
+            creep.memory.status = false;
+            creep.memory.getSource = "undefined";
         }
 	}
 };
