@@ -18,15 +18,15 @@ var roleBuilder = {
 	    if(creep.memory.building) {
 	        var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
             if(targets.length) {
-                if(creep.build(targets[0]) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#00ff00'}});
+                if(creep.build(Game.getObjectById(creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES).id)) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(Game.getObjectById(creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES).id), {visualizePathStyle: {stroke: '#00ff00'}});
                 }
             }
 	    }
 	    else {
 	        var sources = creep.room.find(FIND_SOURCES);
-            if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(sources[0], {visualizePathStyle: {stroke: '#00ff00'}});
+            if(creep.harvest(Game.getObjectById(creep.pos.findClosestByRange(FIND_SOURCES).id)) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(Game.getObjectById(creep.pos.findClosestByRange(FIND_SOURCES).id), {visualizePathStyle: {stroke: '#00ff00'}});
             }
 	    }
 	}
