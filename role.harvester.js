@@ -9,7 +9,7 @@ var roleHarvester = {
         //寻找房间所有资源
         var sources = creep.room.find(FIND_SOURCES);
         //首次进入status未定义，赋值给他状态是0让他去取能量
-        if(typeof creep.memory.status === "undefined"){
+        if(typeof creep.memory.status == null){
             creep.memory.status = false;
         }
         //状态为false则需要去取能量
