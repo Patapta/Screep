@@ -17,7 +17,7 @@ var constructionTower = {
 
     repair: function(tower){
         //维护函数
-        if(tower.store[RESOURCE_ENERGY] < 0){
+        if(tower.store[RESOURCE_ENERGY] > 0){
             var damage = tower.pos.findClosestByRange(FIND_STRUCTURES, {
                 filter: (structure) => structure.hits < structure.hitsMax
             });
