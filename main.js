@@ -31,40 +31,15 @@ module.exports.loop = function () {
         Game.spawns['Home'].spawnCreep([WORK,CARRY,MOVE], newName, 
             {memory: {role: 'harvester'}});        
     }
-    
-    // if(Game.spawns['Home'].spawning) { 
-    //     var spawningCreep = Game.creeps[Game.spawns['Home'].spawning.name];
-    //     Game.spawns['Home'].room.visual.text(
-    //         '🛠️' + spawningCreep.memory.role,
-    //         Game.spawns['Home'].pos.x + 1, 
-    //         Game.spawns['Home'].pos.y, 
-    //         {align: 'left', opacity: 0.8});
-    // }
-    //调整为最后统一输出当前正在创建劳工的情况
 
     //只有在劳作型劳工足够的情况下再创建其他劳工
     if(harvesters.length >= 3){
-        //如果升级型劳工多余3个，创建剪造型劳工，否则升级型劳工
-        // if(upgrader.length < 3){
-        //自动创建升级型型劳工
             if(upgrader.length < 30) {
                 var newName = 'Upgrader' + Game.time;
                 console.log('Spawning new upgrader: ' + newName);
                 Game.spawns['Home'].spawnCreep([WORK,CARRY,MOVE], newName, 
                     {memory: {role: 'upgrader'}});        
             }
-            
-            // if(Game.spawns['Home'].spawning) { 
-            //     var spawningCreep = Game.creeps[Game.spawns['Home'].spawning.name];
-            //     Game.spawns['Home'].room.visual.text(
-            //         '🛠️' + spawningCreep.memory.role,
-            //         Game.spawns['Home'].pos.x + 1, 
-            //         Game.spawns['Home'].pos.y, 
-            //         {align: 'left', opacity: 0.8});
-            // }
-            //调整为最后统一输出当前正在创建劳工的情况
-        // }
-        // else{
 
             //判断一下当前有没有建造点（constructionSite)，动态决定需要的builder最大值
             var neededBuilders = 1;
@@ -83,17 +58,6 @@ module.exports.loop = function () {
                 Game.spawns['Home'].spawnCreep([WORK,CARRY,MOVE], newName, 
                     {memory: {role: 'builder'}});        
             }
-            
-            // if(Game.spawns['Home'].spawning) { 
-            //     var spawningCreep = Game.creeps[Game.spawns['Home'].spawning.name];
-            //     Game.spawns['Home'].room.visual.text(
-            //         '🛠️' + spawningCreep.memory.role,
-            //         Game.spawns['Home'].pos.x + 1, 
-            //         Game.spawns['Home'].pos.y, 
-            //         {align: 'left', opacity: 0.8});
-            // }
-            //调整为最后统一输出当前正在创建劳工的情况
-        // }
     }
     if(Game.spawns['Home'].spawning) { 
         var spawningCreep = Game.creeps[Game.spawns['Home'].spawning.name];
@@ -123,10 +87,7 @@ module.exports.loop = function () {
     //寻找当前房间内的防御塔
     var towerID = '';
     for(var id in Game.structures){
-        //console.log(Game.structures[id].structureType);
-        if(Game.structures[id].structureType == 'tower'){
-            //console.log("222：" + Game.structures[id].structureType);
-            //console.log("222:" + id);
+        if(Game.structures[id].structureType == 'tower')
             towerID = id;
         }
     }
@@ -135,7 +96,6 @@ module.exports.loop = function () {
     //调用
     if(tower){
         constructionTower.attack(tower);
-        //console.log(tower)
         constructionTower.repair(tower);
     }
 }
