@@ -2,6 +2,10 @@
  * 搬运工人相关模块
  * role.harvester 
  */
+
+//引入配置类
+const config = require('config');
+
 var roleHarvester = {
 
     /** @param {Creep} creep **/
@@ -28,7 +32,24 @@ var roleHarvester = {
                         return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_TOWER) && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
                     }
             });
+            // //如果没有目标
+            // if(creep.memory.targetId == null){
+            //     creep.memory.targetId = targets[0].id;
+            // }
+            // target = Game.getObjectById(creep.memory.targetId);
             if(targets.length > 0) {
+                // if(creep.transfer(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                //     creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
+                // }
+                // console.log(target);
+                //判断防御塔是否满能量，优先加满防御塔
+                // for (config.towers in value) {
+                //     console.log(value);
+                //     tower = Game.getObjectById(value);
+                //     if(creep.transfer(tower, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                //         creep.moveTo(tower, {visualizePathStyle: {stroke: '#ffffff'}});
+                //     }
+                // }
                 if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
                 }
@@ -37,6 +58,7 @@ var roleHarvester = {
         //身上能量为0证明能量空了，把状态切换成去取能量
         if(creep.store[RESOURCE_ENERGY] == 0){
             creep.memory.status = false;
+            creep.memory.targetId = null;
         }
 	}
 };
