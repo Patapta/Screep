@@ -3,8 +3,7 @@
  * role.harvester 
  */
 
-//引入配置类
-const config = require('config');
+
 
 var roleHarvester = {
 
@@ -18,8 +17,9 @@ var roleHarvester = {
         }
         //状态为false则需要去取能量
 	    if(creep.memory.status == false) {
-            if(creep.harvest(Game.getObjectById(creep.pos.findClosestByRange(FIND_SOURCES).id)) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(Game.getObjectById(creep.pos.findClosestByRange(FIND_SOURCES).id), {visualizePathStyle: {stroke: '#ffffff'}});
+            let source_target = Game.getObjectById(creep.pos.findClosestByRange(FIND_SOURCES).id);
+            if(creep.harvest(source_target)== ERR_NOT_IN_RANGE) {
+                creep.moveTo(source_target, {visualizePathStyle: {stroke: '#ffffff'}});
             }
         }
         //当能量值达到50证明能量满了，把状态切换成去干活
@@ -27,31 +27,23 @@ var roleHarvester = {
             creep.memory.status = true;
         }
         if(creep.memory.status == true){
-            var targets = creep.room.find(FIND_STRUCTURES, {
+            var work_targets = creep.room.find(FIND_STRUCTURES, {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_TOWER) && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
                     }
             });
-            // //如果没有目标
-            // if(creep.memory.targetId == null){
-            //     creep.memory.targetId = targets[0].id;
-            // }
-            // target = Game.getObjectById(creep.memory.targetId);
-            if(targets.length > 0) {
-                // if(creep.transfer(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                //     creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
-                // }
-                // console.log(target);
-                //判断防御塔是否满能量，优先加满防御塔
-                // for (config.towers in value) {
-                //     console.log(value);
-                //     tower = Game.getObjectById(value);
-                //     if(creep.transfer(tower, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                //         creep.moveTo(tower, {visualizePathStyle: {stroke: '#ffffff'}});
-                //     }
-                // }
-                if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
+            // //如果没有充能目标
+            if(creep.memory.targetId == null){
+                creep.memory.targetId = work_targets[0].id;
+            }
+            var work_target = Game.getObjectById(creep.memory.targetId);
+            if(work_targets.length > 0) {
+                if(creep.transfer(work_target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(work_target, {visualizePathStyle: {stroke: '#ffffff'}});
+                }
+                //如果目标建筑物能量满了
+                if(work_target.store.getFreeCapacity(RESOURCE_ENERGY) == 0){
+                    creep.memory.targetId = work_targets[0].id;
                 }
             }
         }
