@@ -50,7 +50,6 @@ var roleHarvester = {
         //身上能量为0证明能量空了，把状态切换成去取能量
         if(creep.store[RESOURCE_ENERGY] == 0){
             creep.memory.status = false;
-            creep.memory.targetId = null;
         }
 	}
 };
