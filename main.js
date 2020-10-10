@@ -33,7 +33,7 @@ module.exports.loop = function () {
     if(harvesters.length < 5) {
         var newName = 'Harvester' + Game.time;
         console.log('Spawning new harvester: ' + newName);
-        Game.spawns['Home'].spawnCreep([WORK,CARRY,MOVE], newName, 
+        Game.spawns['Home1'].spawnCreep([WORK,CARRY,MOVE], newName,
             {memory: {role: 'harvester'}});
     }
 
@@ -44,7 +44,7 @@ module.exports.loop = function () {
             if(upgrader.length < 10) {
                 var newName = 'Upgrader' + Game.time;
                 console.log('Spawning new upgrader: ' + newName);
-                Game.spawns['Home'].spawnCreep([WORK,CARRY,MOVE], newName, 
+                Game.spawns['Home1'].spawnCreep([WORK,CARRY,MOVE], newName,
                     {memory: {role: 'upgrader'}});        
             }
 
@@ -62,7 +62,7 @@ module.exports.loop = function () {
             if(builder.length < neededBuilders) {
                 var newName = 'Builder' + Game.time;
                 console.log('Spawning new builder: ' + newName);
-                Game.spawns['Home'].spawnCreep([WORK,CARRY,MOVE], newName, 
+                Game.spawns['Home1'].spawnCreep([WORK,CARRY,MOVE], newName,
                     {memory: {role: 'builder'}});        
             }
             //自动创运输造型劳工
@@ -73,12 +73,12 @@ module.exports.loop = function () {
             //         {memory: {role: 'transporter'}});        
             // }
     }
-    if(Game.spawns['Home'].spawning) { 
-        var spawningCreep = Game.creeps[Game.spawns['Home'].spawning.name];
-        Game.spawns['Home'].room.visual.text(
+    if(Game.spawns['Home1'].spawning) {
+        var spawningCreep = Game.creeps[Game.spawns['Home1'].spawning.name];
+        Game.spawns['Home1'].room.visual.text(
             '🛠️' + spawningCreep.memory.role,
-            Game.spawns['Home'].pos.x + 1, 
-            Game.spawns['Home'].pos.y, 
+            Game.spawns['Home1'].pos.x + 1,
+            Game.spawns['Home1'].pos.y,
             {align: 'left', opacity: 0.8});
     }
 
