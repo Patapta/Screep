@@ -1,8 +1,9 @@
-var roleHarvester = require('role.harvester');
-var roleUpgrader = require('role.upgrader');
-var roleBuilder = require('role.builder');
-var roleTransporter = require('role.transporter');
-var constructionTower = require('construction.tower');
+var roleHarvester = require('role.harvester'),
+    roleUpgrader = require('role.upgrader'),
+    roleBuilder = require('role.builder'),
+    roleTransporter = require('role.transporter'),
+    constructionTower = require('construction.tower');
+const config = require('config');
 
 module.exports.loop = function () {
     
@@ -30,49 +31,49 @@ module.exports.loop = function () {
     console.log('Transporter: ' + transporter.length);
 
     //自动创建劳作型劳工
-    if(harvesters.length < 5) {
+    if(harvesters.length < config.harvesters_number) {
         var newName = 'Harvester' + Game.time;
         console.log('Spawning new harvester: ' + newName);
         Game.spawns['Home1'].spawnCreep([WORK,CARRY,MOVE], newName,
             {memory: {role: 'harvester'}});
     }
-
     //只有在劳作型劳工足够的情况下再创建其他劳工
-    if(harvesters.length >= 5){
+    else {
         //如果升级型劳工多余3个，创建建造型劳工，否则升级型劳工
         //自动创建升级型型劳工
-            if(upgrader.length < 10) {
-                var newName = 'Upgrader' + Game.time;
-                console.log('Spawning new upgrader: ' + newName);
-                Game.spawns['Home1'].spawnCreep([WORK,CARRY,MOVE], newName,
-                    {memory: {role: 'upgrader'}});        
-            }
+        if(upgrader.length < config.upgraders_number) {
+            var newName = 'Upgrader' + Game.time;
+            console.log('Spawning new upgrader: ' + newName);
+            Game.spawns['Home1'].spawnCreep([WORK,CARRY,MOVE], newName,
+                {memory: {role: 'upgrader'}});
+        }
 
-            //判断一下当前有没有建造点（constructionSite)，动态决定需要的builder最大值
-            var neededBuilders = 0;
-            if(harvesters[0].room.find(FIND_CONSTRUCTION_SITES) != ''){
-                //有建造点
-                neededBuilders = 5;
-            }
-            else{
-                neededBuilders = 0;
-            }
-            console.log('Needed Builders: ' + neededBuilders);
-            //自动创建建造型劳工
-            if(builder.length < neededBuilders) {
-                var newName = 'Builder' + Game.time;
-                console.log('Spawning new builder: ' + newName);
-                Game.spawns['Home1'].spawnCreep([WORK,CARRY,MOVE], newName,
-                    {memory: {role: 'builder'}});        
-            }
-            //自动创运输造型劳工
-            // if(upgrader.length < 10) {
-            //     var newName = 'Transporter' + Game.time;
-            //     console.log('Spawning new Transporter: ' + newName);
-            //     Game.spawns['Home'].spawnCreep([WORK,CARRY,MOVE], newName, 
-            //         {memory: {role: 'transporter'}});        
-            // }
+        //判断一下当前有没有建造点（constructionSite)，动态决定需要的builder最大值
+        var neededBuilders = 0;
+        if(harvesters[0].room.find(FIND_CONSTRUCTION_SITES) != ''){
+            //有建造点
+            neededBuilders = config.builders_in_need;
+        }
+        else{
+            neededBuilders = config.buliders_idle;
+        }
+        console.log('Needed Builders: ' + neededBuilders);
+        //自动创建建造型劳工
+        if(builder.length < neededBuilders) {
+            var newName = 'Builder' + Game.time;
+            console.log('Spawning new builder: ' + newName);
+            Game.spawns['Home1'].spawnCreep([WORK,CARRY,MOVE], newName,
+                {memory: {role: 'builder'}});
+        }
+        //自动创运输造型劳工
+        // if(upgrader.length < 10) {
+        //     var newName = 'Transporter' + Game.time;
+        //     console.log('Spawning new Transporter: ' + newName);
+        //     Game.spawns['Home'].spawnCreep([WORK,CARRY,MOVE], newName,
+        //         {memory: {role: 'transporter'}});
+        // }
     }
+
     if(Game.spawns['Home1'].spawning) {
         var spawningCreep = Game.creeps[Game.spawns['Home1'].spawning.name];
         Game.spawns['Home1'].room.visual.text(
