@@ -6,6 +6,11 @@ var roleHarvester = require('role.harvester'),
 const config = require('config');
 
 module.exports.loop = function () {
+    var arr = [];
+    arr['age'] = 12;
+    arr['name'] = 'Chaos';
+    console.log(arr);
+    console.log(typeof arr);
     
     for(var name in Memory.creeps){
         if(!Game.creeps[name]){
