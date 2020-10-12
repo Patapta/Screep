@@ -10,7 +10,7 @@ module.exports.loop = function () {
     arr['age'] = 12;
     arr['name'] = 'Chaos';
     console.log(arr);
-    console.log(arr instanceof Array);
+    console.log(Object.prototype.toString.call(arr) === '[object Array]');
     
     for(var name in Memory.creeps){
         if(!Game.creeps[name]){
