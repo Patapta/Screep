@@ -34,7 +34,7 @@ module.exports.loop = function () {
     if(harvesters.length < config.harvesters_number) {
         var newName = 'Harvester' + Game.time;
         console.log('Spawning new harvester: ' + newName);
-        Game.spawns['Home1'].spawnCreep([WORK,WORK,WORK,WORK,CARRY,MOVE,MOVE,MOVE], newName,
+        Game.spawns['Home1'].spawnCreep([WORK,WORK,WORK,WORK,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], newName,
             {memory: {role: 'harvester'}});
     }
     //只有在劳作型劳工足够的情况下再创建其他劳工
@@ -44,7 +44,7 @@ module.exports.loop = function () {
         if(upgrader.length < config.upgraders_number) {
             var newName = 'Upgrader' + Game.time;
             console.log('Spawning new upgrader: ' + newName);
-            Game.spawns['Home1'].spawnCreep([WORK,WORK,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], newName,
+            Game.spawns['Home1'].spawnCreep([WORK,WORK,WORK,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], newName,
                 {memory: {role: 'upgrader'}});
         }
 
@@ -62,7 +62,7 @@ module.exports.loop = function () {
         if(builder.length < neededBuilders) {
             var newName = 'Builder' + Game.time;
             console.log('Spawning new builder: ' + newName);
-            Game.spawns['Home1'].spawnCreep([WORK,WORK,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], newName,
+            Game.spawns['Home1'].spawnCreep([WORK,WORK,WORK,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], newName,
                 {memory: {role: 'builder'}});
         }
         //自动创运输造型劳工
