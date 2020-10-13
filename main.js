@@ -92,22 +92,22 @@ module.exports.loop = function () {
     }
 
 
-    //统计管理劳工当前工作
-    for(var name in Game.creeps) {
-        var creep = Game.creeps[name];
-        if(creep.memory.role == 'harvester') {
-            roleHarvester.run(creep);
-        }
-        if(creep.memory.role == 'upgrader') {
-            roleUpgrader.run(creep);
-        }
-        if(creep.memory.role == 'builder'){
-            roleBuilder.run(creep);
-        }
-        // if(creep.memory.role == 'transporter'){
-        //     roleTransporter.run(creep);
-        // }
-    }
+    // //统计管理劳工当前工作
+    // for(var name in Game.creeps) {
+    //     var creep = Game.creeps[name];
+    //     if(creep.memory.role == 'harvester') {
+    //         roleHarvester.run(creep);
+    //     }
+    //     if(creep.memory.role == 'upgrader') {
+    //         roleUpgrader.run(creep);
+    //     }
+    //     if(creep.memory.role == 'builder'){
+    //         roleBuilder.run(creep);
+    //     }
+    //     // if(creep.memory.role == 'transporter'){
+    //     //     roleTransporter.run(creep);
+    //     // }
+    // }
 
     //统一管理功能性建筑当前工作
     //寻找当前房间内的防御塔
