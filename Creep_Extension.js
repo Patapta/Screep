@@ -7,6 +7,9 @@ const creepExtension = {
     work() {
         switch (this.memory.role ) {
             case ('harvester'):
+                console.log(888);
+                console.log(this);
+                console.log(888);
                 roleHarvester.run(this);
                 break;
             default:
