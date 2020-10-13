@@ -32,10 +32,16 @@ var roleHarvester = {
                         return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_TOWER) && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
                     }
             });
-            console.log('充能目标'+work_targets[0].structureType);
             //如果没有充能目标
             if(creep.memory.targetId == null){
                 creep.memory.targetId = work_targets[0].id;
+                //循环所有充能目标，优先给防御塔充能
+                for (let i = 0;i < work_targets.length;i++){
+                    if (value.structureType == STRUCTURE_TOWER) {
+                        creep.memory.targetId = work_targets[i].id;
+                        break;
+                    }
+                }
             }
             var work_target = Game.getObjectById(creep.memory.targetId);
             if(work_targets.length > 0) {
@@ -45,6 +51,12 @@ var roleHarvester = {
                 //如果目标建筑物能量满了
                 if(work_target.store.getFreeCapacity(RESOURCE_ENERGY) == 0){
                     creep.memory.targetId = work_targets[0].id;
+                    for (let i = 0;i < work_targets.length;i++){
+                        if (value.structureType == STRUCTURE_TOWER) {
+                            creep.memory.targetId = work_targets[i].id;
+                            break;
+                        }
+                    }
                 }
             }
         }
