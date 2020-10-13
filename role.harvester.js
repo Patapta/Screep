@@ -43,7 +43,7 @@ var roleHarvester = {
                 }
                 //如果目标建筑物能量满了
                 if(work_target.store.getFreeCapacity(RESOURCE_ENERGY) == 0){
-                    creep.memory.targetId = work_targets[1].id;
+                    creep.memory.targetId = work_targets[0].id;
                 }
             }
         }
