@@ -58,13 +58,13 @@ module.exports.loop = function () {
             neededBuilders = config.buliders_idle;
         }
         console.log('Needed Builders: ' + neededBuilders);
-        //自动创建建造型劳工
-        if(builder.length < neededBuilders) {
-            var newName = 'Builder' + Game.time;
-            console.log('Spawning new builder: ' + newName);
-            Game.spawns['Home1'].spawnCreep([WORK,WORK,WORK,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], newName,
-                {memory: {role: 'builder'}});
-        }
+        // //自动创建建造型劳工
+        // if(builder.length < neededBuilders) {
+        //     var newName = 'Builder' + Game.time;
+        //     console.log('Spawning new builder: ' + newName);
+        //     Game.spawns['Home1'].spawnCreep([WORK,WORK,WORK,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], newName,
+        //         {memory: {role: 'builder'}});
+        // }
         //自动创运输造型劳工
         // if(upgrader.length < 10) {
         //     var newName = 'Transporter' + Game.time;
