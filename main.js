@@ -3,9 +3,17 @@ var roleHarvester = require('role.harvester'),
     roleBuilder = require('role.builder'),
     roleTransporter = require('role.transporter'),
     constructionTower = require('construction.tower');
+const mount = require('utils.mount');
 const config = require('config');
 
 module.exports.loop = function () {
+    //挂载原型扩展
+    mount();
+
+    //Creeps 工作
+    for (let name in Game.creeps) {
+        Game.creeps[name].work();
+    }
     
     for(var name in Memory.creeps){
         if(!Game.creeps[name]){
