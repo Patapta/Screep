@@ -37,7 +37,7 @@ var roleHarvester = {
                 creep.memory.targetId = work_targets[0].id;
                 //循环所有充能目标，优先给防御塔充能
                 for (let i = 0;i < work_targets.length;i++){
-                    if (value.structureType == STRUCTURE_TOWER) {
+                    if (work_targets[i].structureType == STRUCTURE_TOWER) {
                         creep.memory.targetId = work_targets[i].id;
                         break;
                     }
@@ -52,7 +52,7 @@ var roleHarvester = {
                 if(work_target.store.getFreeCapacity(RESOURCE_ENERGY) == 0){
                     creep.memory.targetId = work_targets[0].id;
                     for (let i = 0;i < work_targets.length;i++){
-                        if (value.structureType == STRUCTURE_TOWER) {
+                        if (work_targets[i].structureType == STRUCTURE_TOWER) {
                             creep.memory.targetId = work_targets[i].id;
                             break;
                         }
