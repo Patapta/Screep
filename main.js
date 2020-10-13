@@ -39,15 +39,6 @@ module.exports.loop = function () {
     }
     //只有在劳作型劳工足够的情况下再创建其他劳工
     else {
-        //如果升级型劳工多余3个，创建建造型劳工，否则升级型劳工
-        //自动创建升级型型劳工
-        if(upgrader.length < config.upgraders_number) {
-            var newName = 'Upgrader' + Game.time;
-            console.log('Spawning new upgrader: ' + newName);
-            Game.spawns['Home1'].spawnCreep([WORK,WORK,WORK,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], newName,
-                {memory: {role: 'upgrader'}});
-        }
-
         //判断一下当前有没有建造点（constructionSite)，动态决定需要的builder最大值
         var neededBuilders = 0;
         if(harvesters[0].room.find(FIND_CONSTRUCTION_SITES) != ''){
@@ -65,6 +56,15 @@ module.exports.loop = function () {
             Game.spawns['Home1'].spawnCreep([WORK,WORK,WORK,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], newName,
                 {memory: {role: 'builder'}});
         }
+
+        //自动创建升级型型劳工
+        if(upgrader.length < config.upgraders_number) {
+            var newName = 'Upgrader' + Game.time;
+            console.log('Spawning new upgrader: ' + newName);
+            Game.spawns['Home1'].spawnCreep([WORK,WORK,WORK,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], newName,
+                {memory: {role: 'upgrader'}});
+        }
+
         //自动创运输造型劳工
         // if(upgrader.length < 10) {
         //     var newName = 'Transporter' + Game.time;
