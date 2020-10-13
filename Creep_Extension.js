@@ -4,8 +4,10 @@
 const creepExtension = {
     work() {
         switch (this.memory.role ) {
-            case ('harvester'),
-            defalt:
+            case ('harvester'):
+                console.log('i am harvester');
+                break;
+            default:
                 console.log('i am harvester');
                 break;
             case ('upgrader'):
