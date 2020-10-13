@@ -1,20 +1,22 @@
-
+var roleHarvester = require('role.harvester'),
+    roleUpgrader = require('role.upgrader'),
+    roleBuilder = require('role.builder');
 
 // 自定义的 Creep 的拓展
 const creepExtension = {
     work() {
         switch (this.memory.role ) {
             case ('harvester'):
-                console.log('i am harvester');
+                roleHarvester.run(this);
                 break;
             default:
-                console.log('i am harvester');
+                roleHarvester.run(this);
                 break;
             case ('upgrader'):
-                console.log('i am upgrader');
+                roleUpgrader.run(this);
                 break;
             case ('builder'):
-                console.log('i am builder');
+                roleBuilder.run(this);
                 break;
         }
     },
