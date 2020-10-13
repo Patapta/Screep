@@ -34,7 +34,7 @@ module.exports.loop = function () {
     if(harvesters.length < config.harvesters_number) {
         var newName = 'Harvester' + Game.time;
         console.log('Spawning new harvester: ' + newName);
-        Game.spawns['Home1'].spawnCreep([WORK,WORK,WORK,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], newName,
+        Game.spawns['Home1'].spawnCreep([WORK,WORK,WORK,WORK,WORK,WORK,CARRY,MOVE,MOVE,MOVE], newName,
             {memory: {role: 'harvester'}});
     }
     //只有在劳作型劳工足够的情况下再创建其他劳工
