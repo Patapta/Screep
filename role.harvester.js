@@ -42,7 +42,7 @@ var roleHarvester = {
                     creep.moveTo(work_target, {visualizePathStyle: {stroke: '#ffffff'}});
                 }
                 //如果目标建筑物能量满了
-                if(work_target.store.getFreeCapacity(RESOURCE_ENERGY) == 0 || work_target.structureType == STRUCTURE_STORAGE){
+                if(work_target.store.getFreeCapacity(RESOURCE_ENERGY) == 0){
                     this.charge_order(work_targets, creep);
                 }
             }
