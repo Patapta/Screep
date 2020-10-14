@@ -18,6 +18,7 @@ module.exports.loop = function () {
 
     //清除死去虫子的内存数据
     for(var name in Memory.creeps){
+        delete Memory.creeps[name];
         if(!Game.creeps[name]){
             delete Memory.creeps[name];
             console.log('清除死去的弔虫数据: ' + name);
