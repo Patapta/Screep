@@ -29,7 +29,7 @@ var creeps_create = {
         if(harvesters.length < config.harvesters_number) {
             var newName = 'Harvester' + Game.time;
             console.log('Spawning new harvester: ' + newName);
-            Game.spawns['Home1'].spawnCreep([WORK,WORK,WORK,WORK,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], newName,
+            Game.spawns['Home1'].spawnCreep([WORK,CARRY,MOVE], newName,
                 {memory: {role: 'harvester'}});
         } else {//只有在劳作型劳工足够的情况下再创建其他劳工
         //判断一下当前有没有建造点（constructionSite)，动态决定需要的builder最大值
@@ -76,7 +76,16 @@ var creeps_create = {
                 Game.spawns['Home1'].pos.y,
                 {align: 'left', opacity: 0.8});
         }
-    }
+    },
+
+    // get_creep_components: function(config) {
+    //     for (let i = 0; i < config.partsSet.length; i++) {
+    //         for (let j = 0; j < config.partsSet[i][1]; j++) {
+    //             this.templateResult.push(config.partsSet[i][0]);
+    //         }
+    //     }
+    //     return this.templateResult;
+    // }
 };
 
 module.exports = creeps_create;
