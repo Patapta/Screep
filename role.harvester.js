@@ -61,18 +61,18 @@ var roleHarvester = {
             if (work_targets[i].structureType == STRUCTURE_EXTENSION) {
                 creep.memory.targetId = work_targets[i].id;
                 break;
-                if (work_targets[i].structureType == STRUCTURE_SPAWN) {
-                    creep.memory.targetId = work_targets[i].id;
-                    break;
-                    if (work_targets[i].structureType == STRUCTURE_TOWER) {
-                        creep.memory.targetId = work_targets[i].id;
-                        break;
-                        if (work_targets[i].structureType == STRUCTURE_STORAGE) {
-                            creep.memory.targetId = work_targets[i].id;
-                            break;
-                        }
-                    }
-                }
+            }
+            if (work_targets[i].structureType == STRUCTURE_SPAWN) {
+                creep.memory.targetId = work_targets[i].id;
+                break;
+            }
+            if (work_targets[i].structureType == STRUCTURE_TOWER) {
+                creep.memory.targetId = work_targets[i].id;
+                break;
+            }
+            if (work_targets[i].structureType == STRUCTURE_STORAGE) {
+                creep.memory.targetId = work_targets[i].id;
+                break;
             }
         }
     }
