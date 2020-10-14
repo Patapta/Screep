@@ -54,8 +54,8 @@ var roleHarvester = {
             creep.memory.status = false;
         }
 	},
+    //循环所有充能目标，按等级进行优先充能
     charge_order : function (work_targets, creep) {
-        //循环所有充能目标，按等级进行优先充能
         //充能等级从高到底，优先兼顾弔虫的生产，保证基本盘稳定
         for (let i = 0;i < work_targets.length;i++){
             if (work_targets[i].structureType == STRUCTURE_EXTENSION) {

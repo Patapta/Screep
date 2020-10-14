@@ -78,14 +78,26 @@ var creeps_create = {
         }
     },
 
-    // get_creep_components: function(config) {
-    //     for (let i = 0; i < config.partsSet.length; i++) {
-    //         for (let j = 0; j < config.partsSet[i][1]; j++) {
-    //             this.templateResult.push(config.partsSet[i][0]);
-    //         }
-    //     }
-    //     return this.templateResult;
-    // }
+    get_creep_components: function(role) {
+        switch (role){
+            case 'harvester':
+            default:
+                template = config.harvesters_components;
+                break;
+            case 'upgrader':
+                template = config.upgraders_components;
+                break;
+            case 'builder':
+                template = config.builders_components;
+                break;
+        }
+        for (let i = 0; i < template.length; i++) {
+            for (let j = 0; j < template[i][1]; j++) {
+                this.templateResult.push(template[i][0]);
+            }
+        }
+        return this.templateResult;
+    }
 };
 
 module.exports = creeps_create;
