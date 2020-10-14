@@ -77,7 +77,9 @@ var creeps_create = {
         }
     },
 
+    //遍历弔虫部件数据
     get_creep_components: function(role) {
+        templateResult = [];
         switch (role){
             case 'harvester':
             default:
@@ -92,10 +94,10 @@ var creeps_create = {
         }
         for (let i = 0; i < template.length; i++) {
             for (let j = 0; j < template[i][1]; j++) {
-                this.templateResult.push(template[i][0]);
+                templateResult.push(template[i][0]);
             }
         }
-        return this.templateResult;
+        return templateResult;
     }
 };
 
