@@ -3,6 +3,8 @@
  * role.harvester
  */
 
+const config = require('config');
+
 
 var creeps_create = {
     /** @param {Creep} creep **/
