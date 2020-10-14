@@ -56,24 +56,30 @@ var roleHarvester = {
 	},
     charge_order : function (work_targets, creep) {
         //循环所有充能目标，按等级进行优先充能
+        //充能等级从高到底，优先兼顾弔虫的生产，保证基本盘稳定
         for (let i = 0;i < work_targets.length;i++){
-            //充能等级从高到底，优先兼顾弔虫的生产，保证基本盘稳定
             if (work_targets[i].structureType == STRUCTURE_EXTENSION) {
                 creep.memory.targetId = work_targets[i].id;
-                break;
+                return 1;
             }
-            // if (work_targets[i].structureType == STRUCTURE_SPAWN) {
-            //     creep.memory.targetId = work_targets[i].id;
-            //     break;
-            // }
-            // if (work_targets[i].structureType == STRUCTURE_TOWER) {
-            //     creep.memory.targetId = work_targets[i].id;
-            //     break;
-            // }
-            // if (work_targets[i].structureType == STRUCTURE_STORAGE) {
-            //     creep.memory.targetId = work_targets[i].id;
-            //     break;
-            // }
+        }
+        for (let i = 0;i < work_targets.length;i++){
+            if (work_targets[i].structureType == STRUCTURE_SPAWN) {
+                creep.memory.targetId = work_targets[i].id;
+                return 1;
+            }
+        }
+        for (let i = 0;i < work_targets.length;i++){
+            if (work_targets[i].structureType == STRUCTURE_TOWER) {
+                creep.memory.targetId = work_targets[i].id;
+                return 1;
+            }
+        }
+        for (let i = 0;i < work_targets.length;i++){
+            if (work_targets[i].structureType == STRUCTURE_STORAGE) {
+                creep.memory.targetId = work_targets[i].id;
+                return 1;
+            }
         }
     }
 };
