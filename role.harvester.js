@@ -34,7 +34,6 @@ var roleHarvester = {
             });
             //如果没有充能目标
             if(creep.memory.targetId == null){
-                creep.memory.targetId = work_targets[0].id;
                 this.charge_order(work_targets, creep);
             }
             var work_target = Game.getObjectById(creep.memory.targetId);
@@ -43,14 +42,10 @@ var roleHarvester = {
                     creep.moveTo(work_target, {visualizePathStyle: {stroke: '#ffffff'}});
                 }
                 //如果目标建筑物能量满了
-                if(work_target.store.getFreeCapacity(RESOURCE_ENERGY) == 0){
-                    creep.memory.targetId = work_targets[0].id;
+                if(work_target.store.getFreeCapacity(RESOURCE_ENERGY) == 0 || work_target.structureType == STRUCTURE_STORAGE){
                     this.charge_order(work_targets, creep);
                 }
             }
-            console.log(123);
-            console.log(creep.memory.targetId);
-            console.log(123);
         }
         //身上能量为0证明能量空了，把状态切换成去取能量
         if(creep.store[RESOURCE_ENERGY] == 0){
