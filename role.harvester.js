@@ -57,23 +57,23 @@ var roleHarvester = {
     charge_order : function (work_targets, creep) {
         //循环所有充能目标，按等级进行优先充能
         for (let i = 0;i < work_targets.length;i++){
-            //究极套娃，充能等级从高到底，优先兼顾弔虫的生产，保证基本盘稳定
+            //充能等级从高到底，优先兼顾弔虫的生产，保证基本盘稳定
             if (work_targets[i].structureType == STRUCTURE_EXTENSION) {
                 creep.memory.targetId = work_targets[i].id;
                 break;
             }
-            if (work_targets[i].structureType == STRUCTURE_SPAWN) {
-                creep.memory.targetId = work_targets[i].id;
-                break;
-            }
-            if (work_targets[i].structureType == STRUCTURE_TOWER) {
-                creep.memory.targetId = work_targets[i].id;
-                break;
-            }
-            if (work_targets[i].structureType == STRUCTURE_STORAGE) {
-                creep.memory.targetId = work_targets[i].id;
-                break;
-            }
+            // if (work_targets[i].structureType == STRUCTURE_SPAWN) {
+            //     creep.memory.targetId = work_targets[i].id;
+            //     break;
+            // }
+            // if (work_targets[i].structureType == STRUCTURE_TOWER) {
+            //     creep.memory.targetId = work_targets[i].id;
+            //     break;
+            // }
+            // if (work_targets[i].structureType == STRUCTURE_STORAGE) {
+            //     creep.memory.targetId = work_targets[i].id;
+            //     break;
+            // }
         }
     }
 };
