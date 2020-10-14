@@ -29,7 +29,7 @@ var creeps_create = {
         if(harvesters.length < config.harvesters_number) {
             var newName = 'Harvester' + Game.time;
             console.log('Spawning new harvester: ' + newName);
-            Game.spawns['Home1'].spawnCreep([WORK,WORK,WORK,WORK,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], newName,
+            Game.spawns['Home1'].spawnCreep([WORK,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], newName,
                 {memory: {role: 'harvester'}});
         } else {//只有在劳作型劳工足够的情况下再创建其他劳工
         //判断一下当前有没有建造点（constructionSite)，动态决定需要的builder最大值
@@ -46,7 +46,7 @@ var creeps_create = {
         if(builder.length < neededBuilders) {
             var newName = 'Builder' + Game.time;
             console.log('Spawning new builder: ' + newName);
-            Game.spawns['Home1'].spawnCreep([WORK,WORK,WORK,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], newName,
+            Game.spawns['Home1'].spawnCreep([WORK,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], newName,
                 {memory: {role: 'builder'}});
         }
 
@@ -54,7 +54,7 @@ var creeps_create = {
         if(upgrader.length < config.upgraders_number) {
             var newName = 'Upgrader' + Game.time;
             console.log('Spawning new upgrader: ' + newName);
-            Game.spawns['Home1'].spawnCreep([WORK,WORK,WORK,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], newName,
+            Game.spawns['Home1'].spawnCreep([WORK,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], newName,
                 {memory: {role: 'upgrader'}});
         }
 
