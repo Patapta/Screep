@@ -35,7 +35,7 @@ var roleHarvester = {
             //如果没有充能目标
             if(creep.memory.targetId == null){
                 creep.memory.targetId = work_targets[0].id;
-                this.charge_order();
+                this.charge_order(work_targets);
             }
             var work_target = Game.getObjectById(creep.memory.targetId);
             if(work_targets.length > 0) {
@@ -45,7 +45,7 @@ var roleHarvester = {
                 //如果目标建筑物能量满了
                 if(work_target.store.getFreeCapacity(RESOURCE_ENERGY) == 0){
                     creep.memory.targetId = work_targets[0].id;
-                    this.charge_order();
+                    this.charge_order(work_targets);
                 }
             }
         }
@@ -54,7 +54,7 @@ var roleHarvester = {
             creep.memory.status = false;
         }
 	},
-    charge_order : function () {
+    charge_order : function (work_targets) {
         //循环所有充能目标，按等级进行优先充能
         for (let i = 0;i < work_targets.length;i++){
             if (work_targets[i].structureType == STRUCTURE_EXTENSION) {
