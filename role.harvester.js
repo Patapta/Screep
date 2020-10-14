@@ -29,13 +29,13 @@ var roleHarvester = {
         if(creep.memory.status == true){
             var work_targets = creep.room.find(FIND_STRUCTURES, {
                     filter: (structure) => {
-                        return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_TOWER) && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
+                        return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_TOWER || structure.structureType == STRUCTURE_STORAGE) && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
                     }
             });
             //如果没有充能目标
             if(creep.memory.targetId == null){
                 creep.memory.targetId = work_targets[0].id;
-                // this.charge_order(work_targets, creep);
+                this.charge_order(work_targets, creep);
             }
             var work_target = Game.getObjectById(creep.memory.targetId);
             if(work_targets.length > 0) {
@@ -45,7 +45,7 @@ var roleHarvester = {
                 //如果目标建筑物能量满了
                 if(work_target.store.getFreeCapacity(RESOURCE_ENERGY) == 0){
                     creep.memory.targetId = work_targets[0].id;
-                    // this.charge_order(work_targets, creep);
+                    this.charge_order(work_targets, creep);
                 }
             }
         }
@@ -57,18 +57,18 @@ var roleHarvester = {
     charge_order : function (work_targets, creep) {
         //循环所有充能目标，按等级进行优先充能
         for (let i = 0;i < work_targets.length;i++){
-            // if (work_targets[i].structureType == STRUCTURE_EXTENSION) {
-            //     creep.memory.targetId = work_targets[i].id;
-            //     break;
-            //     if (work_targets[i].structureType == STRUCTURE_TOWER) {
-            //         creep.memory.targetId = work_targets[i].id;
-            //         break;
-            //         if (work_targets[i].structureType == STRUCTURE_STORAGE) {
-            //             creep.memory.targetId = work_targets[i].id;
-            //             break;
-            //         }
-            //     }
-            // }
+            if (work_targets[i].structureType == STRUCTURE_EXTENSION) {
+                creep.memory.targetId = work_targets[i].id;
+                break;
+                if (work_targets[i].structureType == STRUCTURE_TOWER) {
+                    creep.memory.targetId = work_targets[i].id;
+                    break;
+                    if (work_targets[i].structureType == STRUCTURE_STORAGE) {
+                        creep.memory.targetId = work_targets[i].id;
+                        break;
+                    }
+                }
+            }
             // ----------------------------------------------------------------
             // if (work_targets[i].structureType == STRUCTURE_STORAGE) {
             //     creep.memory.targetId = work_targets[i].id;
