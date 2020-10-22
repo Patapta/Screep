@@ -34,11 +34,31 @@ module.exports.loop = function () {
         }
     });
 
-    
+
     //调用
     for(var value in tower){
         constructionTower.attack(tower[value]);
         constructionTower.repair(tower[value]);
     }
+    //回头研究一下怎么不用设置spawns名字直接获取防御塔
+    // //统一管理功能性建筑当前工作
+    // //寻找当前房间内的防御塔
+    // var towerID = [];
+    // for(var id in Game.structures){
+    //     if(Game.structures[id].structureType == 'tower'){
+    //         towerID.push(id);
+    //     }
+    // }
+    // var tower = [];
+    // $.each(towerID, function (k, v) {
+    //      tower.push(Game.getObjectById(v));
+    // });
+    //
+    //
+    // //调用
+    // if(tower){
+    //     constructionTower.attack(tower);
+    //     constructionTower.repair(tower);
+    // }
     Game.cpu.generatePixel();
 }
