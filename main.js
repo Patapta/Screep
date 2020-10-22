@@ -31,17 +31,17 @@ module.exports.loop = function () {
     var towerID = [];
     for(var id in Game.structures){
         if(Game.structures[id].structureType == 'tower'){
-            towerID.push(id);
+            towerID.push(Game.structures[id]);
         }
     }
-    var tower = [];
-    for(var value in towerID){
-        tower.push(Game.getObjectById(value));
-    }
+    // var tower = [];
+    // for(var value in towerID){
+    //     tower.push(Game.getObjectById(value));
+    // }
 
     
     //调用
-    for(var value in tower){
+    for(var value in towerID){
         console.log(123);
         console.log(value);
         console.log(456);
