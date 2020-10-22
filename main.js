@@ -28,18 +28,22 @@ module.exports.loop = function () {
 
     //统一管理功能性建筑当前工作
     //寻找当前房间内的防御塔
-    var towerID = '';
+    var towerID = [];
     for(var id in Game.structures){
         if(Game.structures[id].structureType == 'tower'){
-            towerID = id;
+            towerID.push(id);
         }
     }
-    var tower = Game.getObjectById(towerID);
+    var tower = [];
+    $.each(towerID, function (k, v) {
+         tower.push(Game.getObjectById(v));
+    });
+
     
     //调用
-    if(tower){
-        constructionTower.attack(tower);
-        constructionTower.repair(tower);
-    }
+    $.each(tower, function (k, v) {
+        constructionTower.attack(v);
+        constructionTower.repair(v);
+    });
     Game.cpu.generatePixel();
 }
