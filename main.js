@@ -33,13 +33,16 @@ module.exports.loop = function () {
             return (structure.structureType == STRUCTURE_TOWER);
         }
     });
+    console.log(123);
+    console.log(tower);
+    console.log(456);
 
     
     //调用
     for(var value in tower){
-        console.log(123);
-        console.log(value);
-        console.log(456);
+        // console.log(123);
+        // console.log(value);
+        // console.log(456);
         // constructionTower.attack(value);
         // constructionTower.repair(value);
     }
