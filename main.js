@@ -35,13 +35,13 @@ module.exports.loop = function () {
         }
     }
     var tower = [];
-    $.each(towerID, function (k, v) {
+    each(towerID, function (k, v) {
          tower.push(Game.getObjectById(v));
     });
 
     
     //调用
-    $.each(tower, function (k, v) {
+    each(tower, function (k, v) {
         constructionTower.attack(v);
         constructionTower.repair(v);
     });
