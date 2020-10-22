@@ -28,20 +28,15 @@ module.exports.loop = function () {
 
     //统一管理功能性建筑当前工作
     //寻找当前房间内的防御塔
-    var towerID = [];
-    for(var id in Game.structures){
-        if(Game.structures[id].structureType == 'tower'){
-            towerID.push(Game.structures[id]);
+    var tower = Game.spawns['Home1'].room.find(FIND_STRUCTURES, {
+        filter: (structure) => {
+            return (structure.structureType == STRUCTURE_TOWER);
         }
-    }
-    // var tower = [];
-    // for(var value in towerID){
-    //     tower.push(Game.getObjectById(value));
-    // }
+    });
 
     
     //调用
-    for(var value in towerID){
+    for(var value in tower){
         console.log(123);
         console.log(value);
         console.log(456);
