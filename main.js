@@ -41,4 +41,5 @@ module.exports.loop = function () {
         constructionTower.attack(tower);
         constructionTower.repair(tower);
     }
+    Game.cpu.generatePixel();
 }
