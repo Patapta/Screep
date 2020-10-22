@@ -42,9 +42,11 @@ module.exports.loop = function () {
     
     //调用
     for(var value in tower){
+        console.log(123);
         console.log(value);
-        constructionTower.attack(value);
-        constructionTower.repair(value);
+        console.log(456);
+        // constructionTower.attack(value);
+        // constructionTower.repair(value);
     }
     Game.cpu.generatePixel();
 }
