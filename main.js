@@ -35,15 +35,15 @@ module.exports.loop = function () {
         }
     }
     var tower = [];
-    each(towerID, function (k, v) {
-         tower.push(Game.getObjectById(v));
-    });
+    for(var value in towerID){
+        tower.push(Game.getObjectById(value));
+    }
 
     
     //调用
-    each(tower, function (k, v) {
-        constructionTower.attack(v);
-        constructionTower.repair(v);
-    });
+    for(var value in tower){
+        constructionTower.attack(value);
+        constructionTower.repair(value);
+    }
     Game.cpu.generatePixel();
 }
