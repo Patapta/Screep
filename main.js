@@ -42,6 +42,7 @@ module.exports.loop = function () {
     
     //调用
     for(var value in tower){
+        console.log(value);
         constructionTower.attack(value);
         constructionTower.repair(value);
     }
