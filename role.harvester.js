@@ -24,6 +24,14 @@ var roleHarvester = {
         }
         //当能量值达到50证明能量满了，把状态切换成去干活
         if(creep.store[RESOURCE_ENERGY] == 50){
+            //这里回头优化一下
+            var work_targets = creep.room.find(FIND_STRUCTURES, {
+                filter: (structure) => {
+                    return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_TOWER) && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
+                }
+            });
+            this.charge_order(work_targets, creep);
+            //这里回头优化一下，把充能目标统一获取
             creep.memory.status = true;
         }
         if(creep.memory.status == true){
