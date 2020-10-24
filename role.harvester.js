@@ -9,8 +9,6 @@ var roleHarvester = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
-        //find all the source in the room
-        var sources = creep.room.find(FIND_SOURCES);
         //status is null when the creep is born, defined its status be false make it get the source
         if(typeof creep.memory.status == null){
             creep.memory.status = false;
@@ -24,14 +22,6 @@ var roleHarvester = {
         }
         //when the creep have energy more than 50 means that it should go to work
         if(creep.store[RESOURCE_ENERGY] == 50){
-            //这里回头优化一下
-            var work_targets = creep.room.find(FIND_STRUCTURES, {
-                filter: (structure) => {
-                    return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_TOWER) && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
-                }
-            });
-            this.charge_order(work_targets, creep);
-            //这里回头优化一下，把充能目标统一获取
             creep.memory.status = true;
         }
         if(creep.memory.status == true){
@@ -40,7 +30,7 @@ var roleHarvester = {
                         return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_TOWER) && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
                     }
             });
-            //如果没有充能目标
+            //if there is not charge target
             if(creep.memory.targetId == null){
                 creep.memory.targetId = work_targets[0].id;
                 this.charge_order(work_targets, creep);
