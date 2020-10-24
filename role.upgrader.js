@@ -22,13 +22,13 @@ var roleUpgrader = {
             }
         }
         else{
-            var sources = creep.room.find(FIND_SOURCES);
-            // //upgrader get energy temporarily
-            // var sources = Game.spawns['Home1'].room.find(FIND_STRUCTURES, {
-            //     filter: (structure) => {
-            //         return (structure.structureType == STRUCTURE_STORAGE);
-            //     }
-            // });
+            //upgrader get energy temporarily
+            var sources1 = Game.spawns['Home1'].room.find(FIND_STRUCTURES, {
+                filter: (structure) => {
+                    return (structure.structureType == STRUCTURE_STORAGE);
+                }
+            });
+            console.log(sources1);
             if(creep.harvest(Game.getObjectById(creep.pos.findClosestByRange(FIND_SOURCES).id)) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(Game.getObjectById(creep.pos.findClosestByRange(FIND_SOURCES).id), {visualizePathStyle: {stroke: '#ff0000'}});
             }
