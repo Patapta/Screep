@@ -8,15 +8,15 @@ const mount = require('utils.mount');
 const config = require('config');
 
 module.exports.loop = function () {
-    //挂载原型扩展
+    //mount the prototype extension
     mount();
 
-    //Creeps 工作
+    //ergod the creeps and execute the work function
     for (let name in Game.creeps) {
         Game.creeps[name].work();
     }
 
-    //清除死去虫子的内存数据
+    //clear the memory of dead creeps
     for(var name in Memory.creeps){
         if(!Game.creeps[name]){
             delete Memory.creeps[name];
@@ -26,8 +26,8 @@ module.exports.loop = function () {
 
     creeps_create.create();
 
-    //统一管理功能性建筑当前工作
-    //寻找当前房间内的防御塔
+
+    //find towers in the room
     var tower = Game.spawns['Home1'].room.find(FIND_STRUCTURES, {
         filter: (structure) => {
             return (structure.structureType == STRUCTURE_TOWER);

@@ -2,13 +2,11 @@ var roleHarvester = require('role.harvester'),
     roleUpgrader = require('role.upgrader'),
     roleBuilder = require('role.builder');
 
-// 自定义的 Creep 的拓展
+// define the prototype of creep
 const creepExtension = {
     work() {
         switch (this.memory.role ) {
             case ('harvester'):
-                roleHarvester.run(this);
-                break;
             default:
                 roleHarvester.run(this);
                 break;
@@ -22,7 +20,7 @@ const creepExtension = {
     },
 }
 
-// 将拓展签入 Creep 原型
+// sign the extension into creep prototype
 module.exports = function () {
     _.assign(Creep.prototype, creepExtension)
 }

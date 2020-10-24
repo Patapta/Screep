@@ -1,5 +1,5 @@
 /**
- * 建造工人相关模块
+ * builder class
  * role.harvester 
  */
 var roleBuilder = {

@@ -1,5 +1,5 @@
 /**
- * 升级控制器相关模块
+ * upgrader class
  * role.upgrader
  */
 var roleUpgrader = {
