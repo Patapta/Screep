@@ -29,11 +29,11 @@ var roleUpgrader = {
                 }
             });
             // console.log(storage[0]);
-            if(creep.harvest(Game.getObjectById(creep.pos.findClosestByRange(FIND_SOURCES).id)) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(Game.getObjectById(creep.pos.findClosestByRange(FIND_SOURCES).id), {visualizePathStyle: {stroke: '#ff0000'}});
-            }
+            // if(creep.harvest(Game.getObjectById(creep.pos.findClosestByRange(FIND_SOURCES).id)) == ERR_NOT_IN_RANGE) {
+            //     creep.moveTo(Game.getObjectById(creep.pos.findClosestByRange(FIND_SOURCES).id), {visualizePathStyle: {stroke: '#ff0000'}});
+            // }
             if(creep.withdraw(storage[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(storage[0]);
+                creep.moveTo(storage[0], {visualizePathStyle: {stroke: '#ff0000'}});
             }
 
         }
