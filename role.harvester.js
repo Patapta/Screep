@@ -21,7 +21,7 @@ var roleHarvester = {
             }
         }
         //when the creep have energy more than 50 means that it should go to work
-        if(creep.store[RESOURCE_ENERGY] == 50){
+        if(creep.store[RESOURCE_ENERGY] == 500){
             creep.memory.status = true;
         }
         if(creep.memory.status == true){
