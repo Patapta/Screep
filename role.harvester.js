@@ -56,30 +56,31 @@ var roleHarvester = {
     //ergod all the structure and charge them in order
     charge_order : function (work_targets, creep) {
         //charge order extension>spawn>tower>storage
-        for (let i = 0;i < work_targets.length;i++){
-            if (work_targets[i].structureType == STRUCTURE_EXTENSION) {
-                creep.memory.targetId = work_targets[i].id;
-                return 1;
-            }
-        }
-        for (let i = 0;i < work_targets.length;i++){
-            if (work_targets[i].structureType == STRUCTURE_SPAWN) {
-                creep.memory.targetId = work_targets[i].id;
-                return 1;
-            }
-        }
-        for (let i = 0;i < work_targets.length;i++){
-            if (work_targets[i].structureType == STRUCTURE_TOWER) {
-                creep.memory.targetId = work_targets[i].id;
-                return 1;
-            }
-        }
-        for (let i = 0;i < work_targets.length;i++){
-            if (work_targets[i].structureType == STRUCTURE_STORAGE) {
-                creep.memory.targetId = work_targets[i].id;
-                return 1;
-            }
-        }
+        console.log(work_targets[i]);
+        // for (let i = 0;i < work_targets.length;i++){
+        //     if (work_targets[i].structureType == STRUCTURE_EXTENSION) {
+        //         creep.memory.targetId = work_targets[i].id;
+        //         return 1;
+        //     }
+        // }
+        // for (let i = 0;i < work_targets.length;i++){
+        //     if (work_targets[i].structureType == STRUCTURE_SPAWN) {
+        //         creep.memory.targetId = work_targets[i].id;
+        //         return 1;
+        //     }
+        // }
+        // for (let i = 0;i < work_targets.length;i++){
+        //     if (work_targets[i].structureType == STRUCTURE_TOWER) {
+        //         creep.memory.targetId = work_targets[i].id;
+        //         return 1;
+        //     }
+        // }
+        // for (let i = 0;i < work_targets.length;i++){
+        //     if (work_targets[i].structureType == STRUCTURE_STORAGE) {
+        //         creep.memory.targetId = work_targets[i].id;
+        //         return 1;
+        //     }
+        // }
     }
 };
 
