@@ -27,7 +27,7 @@ var roleHarvester = {
         if(creep.memory.status == true){
             var work_targets = creep.room.find(FIND_STRUCTURES, {
                     filter: (structure) => {
-                        return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_TOWER || work_target.structureType == STRUCTURE_STORAGE) && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
+                        return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_TOWER || structure.structureType == STRUCTURE_STORAGE) && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
                     }
             });
             //if there is not charge target
@@ -56,31 +56,31 @@ var roleHarvester = {
     //ergod all the structure and charge them in order
     charge_order : function (work_targets, creep) {
         //charge order extension>spawn>tower>storage
-        console.log(work_targets[i]);
-        // for (let i = 0;i < work_targets.length;i++){
-        //     if (work_targets[i].structureType == STRUCTURE_EXTENSION) {
-        //         creep.memory.targetId = work_targets[i].id;
-        //         return 1;
-        //     }
-        // }
-        // for (let i = 0;i < work_targets.length;i++){
-        //     if (work_targets[i].structureType == STRUCTURE_SPAWN) {
-        //         creep.memory.targetId = work_targets[i].id;
-        //         return 1;
-        //     }
-        // }
-        // for (let i = 0;i < work_targets.length;i++){
-        //     if (work_targets[i].structureType == STRUCTURE_TOWER) {
-        //         creep.memory.targetId = work_targets[i].id;
-        //         return 1;
-        //     }
-        // }
-        // for (let i = 0;i < work_targets.length;i++){
-        //     if (work_targets[i].structureType == STRUCTURE_STORAGE) {
-        //         creep.memory.targetId = work_targets[i].id;
-        //         return 1;
-        //     }
-        // }
+        // console.log(work_targets[i]);
+        for (let i = 0;i < work_targets.length;i++){
+            if (work_targets[i].structureType == STRUCTURE_EXTENSION) {
+                creep.memory.targetId = work_targets[i].id;
+                return 1;
+            }
+        }
+        for (let i = 0;i < work_targets.length;i++){
+            if (work_targets[i].structureType == STRUCTURE_SPAWN) {
+                creep.memory.targetId = work_targets[i].id;
+                return 1;
+            }
+        }
+        for (let i = 0;i < work_targets.length;i++){
+            if (work_targets[i].structureType == STRUCTURE_TOWER) {
+                creep.memory.targetId = work_targets[i].id;
+                return 1;
+            }
+        }
+        for (let i = 0;i < work_targets.length;i++){
+            if (work_targets[i].structureType == STRUCTURE_STORAGE) {
+                creep.memory.targetId = work_targets[i].id;
+                return 1;
+            }
+        }
     }
 };
 
