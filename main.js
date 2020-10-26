@@ -17,16 +17,15 @@ module.exports.loop = function () {
     //         return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_TOWER || structure.structureType == STRUCTURE_STORAGE) && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
     //     }
     // });
-    const test = Game.spawns['Home1'].room.find(FIND_MY_STRUCTURES, {
+    const structure = Game.spawns['Home1'].room.find(FIND_MY_STRUCTURES, {
         filter: (structure) => {
             return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_TOWER || structure.structureType == STRUCTURE_STORAGE) && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
         }
     });
-    console.log(test);
 
     //ergod the creeps and execute the work function
     for (let name in Game.creeps) {
-        Game.creeps[name].work();
+        Game.creeps[name].work(structure);
     }
 
     //clear the memory of dead creeps
