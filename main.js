@@ -11,12 +11,12 @@ module.exports.loop = function () {
     //mount the prototype extension
     mount();
 
-    //get the structure_targets in the room
-    room.memory.structure_targets = creep.room.find(FIND_STRUCTURES, {
-        filter: (structure) => {
-            return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_TOWER || structure.structureType == STRUCTURE_STORAGE) && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
-        }
-    });
+    // //get the structure_targets in the room
+    // room.memory.structure_targets = creep.room.find(FIND_STRUCTURES, {
+    //     filter: (structure) => {
+    //         return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_TOWER || structure.structureType == STRUCTURE_STORAGE) && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
+    //     }
+    // });
 
     //ergod the creeps and execute the work function
     for (let name in Game.creeps) {
