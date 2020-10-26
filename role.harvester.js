@@ -32,60 +32,32 @@ var roleHarvester = {
                 }
                 break;
             case(true):
-                var work_targets = creep.room.find(FIND_STRUCTURES, {
-                    filter: (structure) => {
-                        return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_TOWER || structure.structureType == STRUCTURE_STORAGE) && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
-                    }
-                });
-                //if there is not charge target
-                if(creep.memory.targetId == null){
-                    creep.memory.targetId = work_targets[0].id;
-                    // this.charge_order(work_targets, creep);
-                }
-                this.charge_order(work_targets, creep);
-                var work_target = Game.getObjectById(creep.memory.targetId);
-                if(work_targets.length > 0) {
-                    if(creep.transfer(work_target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(work_target, {visualizePathStyle: {stroke: '#ffffff'}});
-                    }
-                    //if the structure's energy is full
-                    if(work_target.store.getFreeCapacity(RESOURCE_ENERGY) == 0 || work_target.structureType == STRUCTURE_STORAGE){
-                        creep.memory.targetId = work_targets[0].id;
-                        // this.charge_order(work_targets, creep);
-                    }
+                // var work_targets = creep.room.find(FIND_STRUCTURES, {
+                //     filter: (structure) => {
+                //         return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_TOWER || structure.structureType == STRUCTURE_STORAGE) && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
+                //     }
+                // });
+                // //if there is not charge target
+                // if(creep.memory.targetId == null){
+                //     creep.memory.targetId = work_targets[0].id;
+                // }
+                // this.charge_order(work_targets, creep);
+                // var work_target = Game.getObjectById(creep.memory.targetId);
+                // if(work_targets.length > 0) {
+                //     if(creep.transfer(work_target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                //         creep.moveTo(work_target, {visualizePathStyle: {stroke: '#ffffff'}});
+                //     }
+                //     //if the structure's energy is full
+                //     if(work_target.store.getFreeCapacity(RESOURCE_ENERGY) == 0 || work_target.structureType == STRUCTURE_STORAGE){
+                //         creep.memory.targetId = work_targets[0].id;
+                //     }
+                // }
+                this.charge_order(room.memory.structure_targets, creep);
+                let work_target = Game.getObjectById(creep.memory.targetId);
+                if(creep.transfer(work_target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(work_target, {visualizePathStyle: {stroke: '#ffffff'}});
                 }
         }
-        // //status equal to false means that the creep should get the source
-	    // if(creep.memory.status == false) {
-        //     let source_target = Game.getObjectById(creep.pos.findClosestByRange(FIND_SOURCES_ACTIVE).id);
-        //     if(creep.harvest(source_target)== ERR_NOT_IN_RANGE) {
-        //         creep.moveTo(source_target, {visualizePathStyle: {stroke: '#ffffff'}});
-        //     }
-        // }
-        // if(creep.memory.status == true){
-        //     var work_targets = creep.room.find(FIND_STRUCTURES, {
-        //             filter: (structure) => {
-        //                 return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_TOWER || structure.structureType == STRUCTURE_STORAGE) && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
-        //             }
-        //     });
-        //     //if there is not charge target
-        //     if(creep.memory.targetId == null){
-        //         creep.memory.targetId = work_targets[0].id;
-        //         // this.charge_order(work_targets, creep);
-        //     }
-        //     this.charge_order(work_targets, creep);
-        //     var work_target = Game.getObjectById(creep.memory.targetId);
-        //     if(work_targets.length > 0) {
-        //         if(creep.transfer(work_target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-        //             creep.moveTo(work_target, {visualizePathStyle: {stroke: '#ffffff'}});
-        //         }
-        //         //if the structure's energy is full
-        //         if(work_target.store.getFreeCapacity(RESOURCE_ENERGY) == 0 || work_target.structureType == STRUCTURE_STORAGE){
-        //             creep.memory.targetId = work_targets[0].id;
-        //             // this.charge_order(work_targets, creep);
-        //         }
-        //     }
-        // }
 	},
     //ergod all the structure and charge them in order
     charge_order : function (work_targets, creep) {
