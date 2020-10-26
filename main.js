@@ -17,12 +17,12 @@ module.exports.loop = function () {
     //         return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_TOWER || structure.structureType == STRUCTURE_STORAGE) && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
     //     }
     // });
-    const test = Game.spawns['Spawn1'].rooms.find(FIND_MY_STRUCTURES, {
-        filter: (structure) => {
-            return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_TOWER || structure.structureType == STRUCTURE_STORAGE) && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
-        }
-    });
-    console.log(test);
+    // const test = Game.spawns['Spawn1'].rooms.find(FIND_MY_STRUCTURES, {
+    //     filter: (structure) => {
+    //         return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_TOWER || structure.structureType == STRUCTURE_STORAGE) && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
+    //     }
+    // });
+    // console.log(test);
 
     //ergod the creeps and execute the work function
     for (let name in Game.creeps) {
