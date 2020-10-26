@@ -21,6 +21,9 @@ var roleHarvester = {
         if(creep.store[RESOURCE_ENERGY] == 0){
             creep.memory.status = false;
         }
+        console.log(123);
+        console.log(this);
+        console.log(456);
         switch (creep.memory.status) {
             case(false):
             default:
