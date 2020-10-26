@@ -15,7 +15,7 @@ var roleHarvester = {
         }
         //status equal to false means that the creep should get the source
 	    if(creep.memory.status == false) {
-            let source_target = Game.getObjectById(creep.pos.findClosestByRange(FIND_SOURCES).id);
+            let source_target = Game.getObjectById(creep.pos.findClosestByRange(FIND_SOURCES_ACTIVE).id);
             if(creep.harvest(source_target)== ERR_NOT_IN_RANGE) {
                 creep.moveTo(source_target, {visualizePathStyle: {stroke: '#ffffff'}});
             }
@@ -56,7 +56,6 @@ var roleHarvester = {
     //ergod all the structure and charge them in order
     charge_order : function (work_targets, creep) {
         //charge order extension>spawn>tower>storage
-        // console.log(work_targets[i]);
         for (let i = 0;i < work_targets.length;i++){
             if (work_targets[i].structureType == STRUCTURE_EXTENSION) {
                 creep.memory.targetId = work_targets[i].id;
