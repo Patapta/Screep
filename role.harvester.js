@@ -9,6 +9,9 @@ var roleHarvester = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
+        console.log(123)
+        console.log(creep.store.getCapacity())
+        console.log(456)
         //status is null when the creep is born, defined its status be false make it get the source
         if(typeof creep.memory.status == null){
             creep.memory.status = false;
