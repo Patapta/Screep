@@ -16,14 +16,13 @@ var roleHarvester = {
         //when the creep have enough energy means that it should go to work
         if(creep.store[RESOURCE_ENERGY] == creep.store.getCapacity()){
             creep.memory.status = true;
+            this.run(creep);
         }
         //when the creep don't have energy means that it should go to get energy
         if(creep.store[RESOURCE_ENERGY] == 0){
             creep.memory.status = false;
+            this.run(creep);
         }
-        console.log(123);
-        console.log(this);
-        console.log(456);
         switch (creep.memory.status) {
             case(false):
             default:
