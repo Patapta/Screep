@@ -28,13 +28,12 @@ module.exports.loop = function () {
             console.log(123);
             structures.push(Game.structures[key]);
         }
-        console.log(structures);
     }
-    // console.log(structures);
+    console.log(structures);
 
     //ergod the creeps and execute the work function
     for (let name in Game.creeps) {
-        Game.creeps[name].work(structures);
+        // Game.creeps[name].work(structures);
     }
 
     //clear the memory of dead creeps
