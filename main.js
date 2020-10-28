@@ -21,8 +21,6 @@ module.exports.loop = function () {
             Game.structures[key].store.getFreeCapacity(RESOURCE_ENERGY) > 0){
             structures.push(Game.structures[key]);
         }
-        console.log(456);
-        console.log(Game.structures[key].store.getFreeCapacity(RESOURCE_ENERGY));
     }
 
     var structure = Game.spawns['Home1'].room.find(FIND_MY_STRUCTURES, {
