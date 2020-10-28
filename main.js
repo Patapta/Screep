@@ -28,6 +28,7 @@ module.exports.loop = function () {
             structures.push(Game.structures[key]);
         }
     }
+    console.log(structures);
 
     //ergod the creeps and execute the work function
     for (let name in Game.creeps) {
