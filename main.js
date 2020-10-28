@@ -18,26 +18,15 @@ module.exports.loop = function () {
             Game.structures[key].structureType == STRUCTURE_SPAWN ||
             Game.structures[key].structureType == STRUCTURE_TOWER ||
             Game.structures[key].structureType == STRUCTURE_STORAGE){
-            //
-            // let structure = Game.getObjectById(Game.structures[key].id);
-            // console.log(structure.store.getFreeCapacity(RESOURCE_ENERGY));
-            // console.log(Game.structures[key].store.getFreeCapacity(RESOURCE_ENERGY));
             if (Game.structures[key].store.getFreeCapacity(RESOURCE_ENERGY) > 0){
                 structures.push(Game.structures[key]);
             }
         }
-        // console.log(Game.structures[key].store.getFreeCapacity(RESOURCE_ENERGY));
     }
-
-    var structure = Game.spawns['Home1'].room.find(FIND_MY_STRUCTURES, {
-        filter: (structure) => {
-            return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_TOWER || structure.structureType == STRUCTURE_STORAGE) && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
-        }
-    });
 
     //ergod the creeps and execute the work function
     for (let name in Game.creeps) {
-        Game.creeps[name].work(structure);
+        Game.creeps[name].work(structures);
     }
     console.log(1);
     console.log(structures.length);
@@ -56,27 +45,13 @@ module.exports.loop = function () {
     //create the creep
     creeps_create.create();
 
-    //find towers in the room
-    var tower = Game.spawns['Home1'].room.find(FIND_STRUCTURES, {
-        filter: (structure) => {
-            return (structure.structureType == STRUCTURE_TOWER);
+    //ergod the towers and execute the work function
+    for(let key in structures){
+        if (structures[key].structureType == STRUCTURE_TOWER){
+            constructionTower.attack(structures[key]);
+            constructionTower.repair(structures[key]);
         }
-    });
-
-
-    //run it
-    for(var value in tower){
-        constructionTower.attack(tower[value]);
-        constructionTower.repair(tower[value]);
     }
-
-    // //ergod the towers and execute the work function
-    // for(let key in structures){
-    //     if (structures[key].structureType == STRUCTURE_TOWER){
-    //         constructionTower.attack(structures[key]);
-    //         constructionTower.repair(structures[key]);
-    //     }
-    // }
 
     //use the cpu
     Game.cpu.generatePixel();
