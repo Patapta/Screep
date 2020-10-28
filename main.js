@@ -19,7 +19,7 @@ module.exports.loop = function () {
     });
 
     //get the structure_targets in the room
-    const structures = [];
+    var structures = [];
     for(let key in Game.structures){
         if (Game.structures[key].structureType == STRUCTURE_EXTENSION ||
             Game.structures[key].structureType == STRUCTURE_SPAWN ||
@@ -29,6 +29,7 @@ module.exports.loop = function () {
             console.log(123);
             structures.push(Game.structures[key]);
         }
+        // console.log(structures);
     }
     console.log(structures);
 
