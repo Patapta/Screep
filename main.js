@@ -17,12 +17,13 @@ module.exports.loop = function () {
         if (Game.structures[key].structureType == STRUCTURE_EXTENSION ||
             Game.structures[key].structureType == STRUCTURE_SPAWN ||
             Game.structures[key].structureType == STRUCTURE_TOWER ||
-            Game.structures[key].structureType == STRUCTURE_STORAGE){
+            Game.structures[key].structureType == STRUCTURE_STORAGE &&
+            Game.structures[key].store.getFreeCapacity(RESOURCE_ENERGY) > 0){
             //
             // let structure = Game.getObjectById(Game.structures[key].id);
             structures.push(Game.structures[key]);
             // console.log(structure.store.getFreeCapacity(RESOURCE_ENERGY));
-            console.log(Game.structures[key].store.getFreeCapacity(RESOURCE_ENERGY));
+            // console.log(Game.structures[key].store.getFreeCapacity(RESOURCE_ENERGY));
         }
         // console.log(Game.structures[key].store.getFreeCapacity(RESOURCE_ENERGY));
     }
