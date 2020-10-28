@@ -18,6 +18,11 @@ module.exports.loop = function () {
         }
     });
 
+    //test
+    for(let key in Game.structures){
+        console.log(Game.structures[key]);
+    }
+
     //ergod the creeps and execute the work function
     for (let name in Game.creeps) {
         Game.creeps[name].work(structure);
