@@ -25,6 +25,7 @@ module.exports.loop = function () {
             Game.structures[key].structureType == STRUCTURE_SPAWN ||
             Game.structures[key].structureType == STRUCTURE_TOWER ||
             Game.structures[key].structureType == STRUCTURE_STORAGE && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0){
+            console.log(123);
             structures.push(Game.structures[key]);
         }
     }
