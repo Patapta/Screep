@@ -38,11 +38,11 @@ module.exports.loop = function () {
     for (let name in Game.creeps) {
         Game.creeps[name].work(structure);
     }
-    // console.log(1);
-    // console.log(structures);
-    // console.log(2);
-    // console.log(structure);
-    // console.log(3);
+    console.log(1);
+    console.log(structures);
+    console.log(2);
+    console.log(structure);
+    console.log(3);
 
     //clear the memory of dead creeps
     for(var name in Memory.creeps){
