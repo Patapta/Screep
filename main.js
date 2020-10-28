@@ -20,7 +20,9 @@ module.exports.loop = function () {
 
     //test
     for(let key in Game.structures){
-        console.log(Game.structures[key]);
+        if (Game.structures[key].structureType == STRUCTURE_TOWER){
+            console.log(Game.structures[key]);
+        }
     }
 
     //ergod the creeps and execute the work function
