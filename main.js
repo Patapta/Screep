@@ -35,9 +35,9 @@ module.exports.loop = function () {
         Game.creeps[name].work(structure);
     }
     console.log(1);
-    console.log(structures.length);
+    console.log(structures);
     console.log(2);
-    console.log(structure.length);
+    console.log(structure);
     console.log(3);
 
     //clear the memory of dead creeps
@@ -48,8 +48,8 @@ module.exports.loop = function () {
         }
     }
 
+    //create the creep
     creeps_create.create();
-
 
     //find towers in the room
     var tower = Game.spawns['Home1'].room.find(FIND_STRUCTURES, {
