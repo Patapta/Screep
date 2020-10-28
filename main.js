@@ -45,13 +45,27 @@ module.exports.loop = function () {
     //create the creep
     creeps_create.create();
 
-    //ergod the towers and execute the work function
-    for(let key in structures){
-        if (structures[key].structureType == STRUCTURE_TOWER){
-            constructionTower.attack(structures[key]);
-            constructionTower.repair(structures[key]);
+    //find towers in the room
+    var tower = Game.spawns['Home1'].room.find(FIND_STRUCTURES, {
+        filter: (structure) => {
+            return (structure.structureType == STRUCTURE_TOWER);
         }
+    });
+
+
+    //run it
+    for(var value in tower){
+        constructionTower.attack(tower[value]);
+        constructionTower.repair(tower[value]);
     }
+
+    // //ergod the towers and execute the work function
+    // for(let key in structures){
+    //     if (structures[key].structureType == STRUCTURE_TOWER){
+    //         constructionTower.attack(structures[key]);
+    //         constructionTower.repair(structures[key]);
+    //     }
+    // }
 
     //use the cpu
     Game.cpu.generatePixel();
