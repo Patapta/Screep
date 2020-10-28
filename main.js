@@ -39,9 +39,9 @@ module.exports.loop = function () {
         Game.creeps[name].work(structure);
     }
     console.log(1);
-    console.log(structures);
+    console.log(structures.length);
     console.log(2);
-    console.log(structure);
+    console.log(structure.length);
     console.log(3);
 
     //clear the memory of dead creeps
