@@ -17,8 +17,7 @@ module.exports.loop = function () {
         if (Game.structures[key].structureType == STRUCTURE_EXTENSION ||
             Game.structures[key].structureType == STRUCTURE_SPAWN ||
             Game.structures[key].structureType == STRUCTURE_TOWER ||
-            Game.structures[key].structureType == STRUCTURE_STORAGE
-        ){
+            Game.structures[key].structureType == STRUCTURE_STORAGE){
             structures.push(Game.structures[key]);
         }
         console.log(Game.structures[key].store);
