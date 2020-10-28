@@ -11,13 +11,6 @@ module.exports.loop = function () {
     //mount the prototype extension
     mount();
 
-    // //get the structure_targets in the room
-    // const structure = Game.spawns['Home1'].room.find(FIND_MY_STRUCTURES, {
-    //     filter: (structure) => {
-    //         return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_TOWER || structure.structureType == STRUCTURE_STORAGE) && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
-    //     }
-    // });
-
     //get the structure_targets in the room
     var structures = [];
     for(let key in Game.structures){
@@ -29,7 +22,6 @@ module.exports.loop = function () {
             structures.push(Game.structures[key]);
         }
     }
-    console.log(structures);
 
     //ergod the creeps and execute the work function
     for (let name in Game.creeps) {
@@ -46,39 +38,14 @@ module.exports.loop = function () {
 
     creeps_create.create();
 
-
-    //find towers in the room
-    var tower = Game.spawns['Home1'].room.find(FIND_STRUCTURES, {
-        filter: (structure) => {
-            return (structure.structureType == STRUCTURE_TOWER);
+    //ergod the towers and execute the work function
+    for(let key in structures){
+        if (structures[key].structureType == STRUCTURE_TOWER){
+            constructionTower.attack(structures[key]);
+            constructionTower.repair(structures[key]);
         }
-    });
-
-
-    //调用
-    for(var value in tower){
-        constructionTower.attack(tower[value]);
-        constructionTower.repair(tower[value]);
     }
-    //回头研究一下怎么不用设置spawns名字直接获取防御塔
-    // //统一管理功能性建筑当前工作
-    // //寻找当前房间内的防御塔
-    // var towerID = [];
-    // for(var id in Game.structures){
-    //     if(Game.structures[id].structureType == 'tower'){
-    //         towerID.push(id);
-    //     }
-    // }
-    // var tower = [];
-    // $.each(towerID, function (k, v) {
-    //      tower.push(Game.getObjectById(v));
-    // });
-    //
-    //
-    // //调用
-    // if(tower){
-    //     constructionTower.attack(tower);
-    //     constructionTower.repair(tower);
-    // }
+
+    //use the cpu
     Game.cpu.generatePixel();
 }
