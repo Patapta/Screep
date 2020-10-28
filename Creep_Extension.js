@@ -4,11 +4,11 @@ var roleHarvester = require('role.harvester'),
 
 // define the prototype of creep
 const creepExtension = {
-    work(structure) {
+    work(structures) {
         switch (this.memory.role ) {
             case ('harvester'):
             default:
-                roleHarvester.run(this, structure);
+                roleHarvester.run(this, structures);
                 break;
             case ('upgrader'):
                 roleUpgrader.run(this);

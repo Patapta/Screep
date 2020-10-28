@@ -8,7 +8,7 @@
 var roleHarvester = {
 
     /** @param {Creep} creep **/
-    run: function(creep, structure) {
+    run: function(creep, structures) {
         //status is null when the creep is born, defined its status be false make it get the source
         if(typeof creep.memory.status == null){
             creep.memory.status = false;
@@ -52,7 +52,7 @@ var roleHarvester = {
                 //         creep.memory.targetId = work_targets[0].id;
                 //     }
                 // }
-                this.charge_order(structure, creep);
+                this.charge_order(structures, creep);
                 let work_target = Game.getObjectById(creep.memory.targetId);
                 if(creep.transfer(work_target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(work_target, {visualizePathStyle: {stroke: '#ffffff'}});
