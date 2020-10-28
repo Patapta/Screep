@@ -11,12 +11,12 @@ module.exports.loop = function () {
     //mount the prototype extension
     mount();
 
-    // //get the structure_targets in the room
-    // const structure = Game.spawns['Home1'].room.find(FIND_MY_STRUCTURES, {
-    //     filter: (structure) => {
-    //         return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_TOWER || structure.structureType == STRUCTURE_STORAGE) && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
-    //     }
-    // });
+    //get the structure_targets in the room
+    const structure = Game.spawns['Home1'].room.find(FIND_MY_STRUCTURES, {
+        filter: (structure) => {
+            return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_TOWER || structure.structureType == STRUCTURE_STORAGE) && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
+        }
+    });
 
     //get the structure_targets in the room
     const structures = [];
@@ -24,7 +24,8 @@ module.exports.loop = function () {
         if (Game.structures[key].structureType == STRUCTURE_EXTENSION ||
             Game.structures[key].structureType == STRUCTURE_SPAWN ||
             Game.structures[key].structureType == STRUCTURE_TOWER ||
-            Game.structures[key].structureType == STRUCTURE_STORAGE && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0){
+            Game.structures[key].structureType == STRUCTURE_STORAGE &&
+            structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0){
             console.log(123);
             structures.push(Game.structures[key]);
         }
@@ -33,7 +34,7 @@ module.exports.loop = function () {
 
     //ergod the creeps and execute the work function
     for (let name in Game.creeps) {
-        // Game.creeps[name].work(structures);
+        Game.creeps[name].work(structure);
     }
 
     //clear the memory of dead creeps
