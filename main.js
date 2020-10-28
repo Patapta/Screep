@@ -22,6 +22,7 @@ module.exports.loop = function () {
             let structure = Game.getObjectById(Game.structures[key].id);
             structures.push(Game.structures[key]);
             console.log(structure.store.getFreeCapacity(RESOURCE_ENERGY));
+            console.log(Game.structures[key].store.getFreeCapacity(RESOURCE_ENERGY));
         }
         // console.log(Game.structures[key].store.getFreeCapacity(RESOURCE_ENERGY));
     }
