@@ -28,11 +28,6 @@ module.exports.loop = function () {
     for (let name in Game.creeps) {
         Game.creeps[name].work(structures);
     }
-    console.log(1);
-    console.log(structures.length);
-    console.log(2);
-    console.log(structure.length);
-    console.log(3);
 
     //clear the memory of dead creeps
     for(var name in Memory.creeps){
@@ -45,27 +40,13 @@ module.exports.loop = function () {
     //create the creep
     creeps_create.create();
 
-    //find towers in the room
-    var tower = Game.spawns['Home1'].room.find(FIND_STRUCTURES, {
-        filter: (structure) => {
-            return (structure.structureType == STRUCTURE_TOWER);
+    //ergod the towers and execute the work function
+    for(let key in structures){
+        if (structures[key].structureType == STRUCTURE_TOWER){
+            constructionTower.attack(structures[key]);
+            constructionTower.repair(structures[key]);
         }
-    });
-
-
-    //run it
-    for(var value in tower){
-        constructionTower.attack(tower[value]);
-        constructionTower.repair(tower[value]);
     }
-
-    // //ergod the towers and execute the work function
-    // for(let key in structures){
-    //     if (structures[key].structureType == STRUCTURE_TOWER){
-    //         constructionTower.attack(structures[key]);
-    //         constructionTower.repair(structures[key]);
-    //     }
-    // }
 
     //use the cpu
     Game.cpu.generatePixel();
