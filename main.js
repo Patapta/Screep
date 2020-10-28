@@ -27,8 +27,8 @@ module.exports.loop = function () {
             Game.structures[key].structureType == STRUCTURE_STORAGE && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0){
             console.log(123);
             structures.push(Game.structures[key]);
-            console.log(structures);
         }
+        console.log(structures);
     }
     // console.log(structures);
 
