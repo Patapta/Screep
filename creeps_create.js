@@ -72,11 +72,11 @@ var creeps_create = {
         switch (role){
             case 'harvester':
             default:
-                if (harvesters_number < 3){//emergency
-                    templateResult = [[WORK],[CARRY],[MOVE]];
-                    console.log(config.harvesters_components);
-                    return templateResult;
-                }
+                // if (harvesters_number < 3){//emergency
+                //     templateResult = [[WORK],[CARRY],[MOVE]];
+                //     console.log(config.harvesters_components);
+                //     return templateResult;
+                // }
                 template = config.harvesters_components;
                 break;
             case 'upgrader':
@@ -91,6 +91,7 @@ var creeps_create = {
                 templateResult.push(template[i][0]);
             }
         }
+        console.log(templateResult);
         return templateResult;
     }
 };
