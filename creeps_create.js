@@ -67,7 +67,7 @@ var creeps_create = {
     },
 
     //ergod the different creep's components
-    get_creep_components: function(role, harvesters_number=0) {
+    get_creep_components: function(role, harvesters_number) {
         templateResult = [];
         switch (role){
             case 'harvester':
