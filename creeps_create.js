@@ -73,10 +73,10 @@ var creeps_create = {
             case 'harvester':
             default:
                 if (harvesters_number < 3){//emergency
-                    templateResult = [[WORK],[CARRY],[MOVE]];
-                    return templateResult;
+                    template = config.emergency_harvesters_components;
+                }else {
+                    template = config.harvesters_components;
                 }
-                template = config.harvesters_components;
                 break;
             case 'upgrader':
                 template = config.upgraders_components;
