@@ -25,7 +25,7 @@ var creeps_create = {
         if(harvesters.length < config.harvesters_number) {
             var newName = 'Harvester' + Game.time;
             console.log('Spawning new harvester: ' + newName);
-            Game.spawns['Home1'].spawnCreep(this.get_creep_components('harvester'), newName,
+            Game.spawns['Home1'].spawnCreep(this.get_creep_components('harvester', harvesters.length), newName,
                 {memory: {role: 'harvester'}});
         } else {//create the upgrader and builder when harvesters are enough
             //create upgrader automatically
@@ -67,11 +67,15 @@ var creeps_create = {
     },
 
     //ergod the different creep's components
-    get_creep_components: function(role) {
+    get_creep_components: function(role, harvesters_number=0) {
         templateResult = [];
         switch (role){
             case 'harvester':
             default:
+                if (harvesters_number < 3){//emergency
+                    template = [[WORK],[CARRY],[MOVE]];
+                    break;
+                }
                 template = config.harvesters_components;
                 break;
             case 'upgrader':
