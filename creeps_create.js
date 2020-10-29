@@ -67,13 +67,13 @@ var creeps_create = {
     },
 
     //ergod the different creep's components
-    get_creep_components: function(role, harvesters_number) {
+    get_creep_components: function(role, harvesters_number=0) {
         templateResult = [];
         switch (role){
             case 'harvester':
             default:
                 if (harvesters_number < 3){//emergency
-                    console.log(123);
+                    console.log(harvesters_number);
                     template = [[WORK],[CARRY],[MOVE]];
                     break;
                 }
