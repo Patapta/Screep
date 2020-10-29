@@ -73,6 +73,7 @@ var creeps_create = {
             case 'harvester':
             default:
                 if (harvesters_number < 3){//emergency
+                    console.log(123);
                     template = [[WORK],[CARRY],[MOVE]];
                     break;
                 }
