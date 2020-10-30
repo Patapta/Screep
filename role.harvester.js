@@ -69,7 +69,7 @@ var roleHarvester = {
      * @returns {number}
      */
     charge_order : function (work_targets, creep) {
-        charge order extension>spawn>tower>storage
+        // charge order extension>spawn>tower>storage
         let check = this.filter_structure(work_targets, 'STRUCTURE_EXTENSION', creep);
         if (check == 1){
             return 1;
