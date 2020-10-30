@@ -33,6 +33,25 @@ var common = {
             }
         }
         return result;
+    },
+    /**
+     *Statistics
+     */
+    stateScanner : function () {
+        // run it each 20 ticks
+        if (Game.time % 20) return
+
+        if (!Memory.stats) Memory.stats = {}
+
+        // get gcl and gpl
+        Memory.stats.gcl = (Game.gcl.progress / Game.gcl.progressTotal) * 100
+        Memory.stats.gclLevel = Game.gcl.level
+        Memory.stats.gpl = (Game.gpl.progress / Game.gpl.progressTotal) * 100
+        Memory.stats.gplLevel = Game.gpl.level
+        // get cpu
+        Memory.stats.cpu = Game.cpu.getUsed()
+        // get bucket
+        Memory.stats.bucket = Game.cpu.bucket
     }
 }
 module.exports = common;

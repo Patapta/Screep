@@ -1,7 +1,4 @@
-var roleHarvester = require('role.harvester'),
-    roleUpgrader = require('role.upgrader'),
-    roleBuilder = require('role.builder'),
-    roleTransporter = require('role.transporter'),
+var common = require('common'),
     constructionTower = require('construction.tower'),
     creeps_create = require('creeps_create');
 const mount = require('utils.mount');
@@ -47,6 +44,9 @@ module.exports.loop = function () {
             constructionTower.repair(Game.structures[key]);
         }
     }
+
+    //statistics
+    common.stateScanner();
 
     //use the cpu
     Game.cpu.generatePixel();
