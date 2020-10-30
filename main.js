@@ -43,7 +43,6 @@ module.exports.loop = function () {
     //ergod the towers and execute the work function
     for(let key in Game.structures){
         if (Game.structures[key].structureType == STRUCTURE_TOWER){
-            console.log(structures[key]);
             constructionTower.attack(Game.structures[key]);
             constructionTower.repair(Game.structures[key]);
         }
