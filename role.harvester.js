@@ -89,59 +89,59 @@ var roleHarvester = {
         //     return 1;
         // }
 
-        // check = this.filter_structure(work_targets, 'STRUCTURE_SPAWN', creep);
-        // if (check == 1){
-        //     return 1;
-        // }
-        sort = [];
-        for (let i = 0;i < work_targets.length;i++){
-            if (work_targets[i].structureType == STRUCTURE_SPAWN) {
-                // creep.memory.targetId = work_targets[i].id;
-                // return 1;
-                sort.push(work_targets[i]);
-            }
-        }
-        if (sort.length > 0){
-            let closest_structure = common.closest_structure(sort, creep);
-            creep.memory.targetId = closest_structure.id;
+        check = this.filter_structure(work_targets, 'spawn', creep);
+        if (check == 1){
             return 1;
         }
+        // sort = [];
+        // for (let i = 0;i < work_targets.length;i++){
+        //     if (work_targets[i].structureType == STRUCTURE_SPAWN) {
+        //         // creep.memory.targetId = work_targets[i].id;
+        //         // return 1;
+        //         sort.push(work_targets[i]);
+        //     }
+        // }
+        // if (sort.length > 0){
+        //     let closest_structure = common.closest_structure(sort, creep);
+        //     creep.memory.targetId = closest_structure.id;
+        //     return 1;
+        // }
 
-        // check = this.filter_structure(work_targets, 'STRUCTURE_TOWER', creep);
-        // if (check == 1){
-        //     return 1;
-        // }
-        sort = [];
-        for (let i = 0;i < work_targets.length;i++){
-            if (work_targets[i].structureType == STRUCTURE_TOWER) {
-                // creep.memory.targetId = work_targets[i].id;
-                // return 1;
-                sort.push(work_targets[i]);
-            }
-        }
-        if (sort.length > 0){
-            let closest_structure = common.closest_structure(sort, creep);
-            creep.memory.targetId = closest_structure.id;
+        check = this.filter_structure(work_targets, 'tower', creep);
+        if (check == 1){
             return 1;
         }
+        // sort = [];
+        // for (let i = 0;i < work_targets.length;i++){
+        //     if (work_targets[i].structureType == STRUCTURE_TOWER) {
+        //         // creep.memory.targetId = work_targets[i].id;
+        //         // return 1;
+        //         sort.push(work_targets[i]);
+        //     }
+        // }
+        // if (sort.length > 0){
+        //     let closest_structure = common.closest_structure(sort, creep);
+        //     creep.memory.targetId = closest_structure.id;
+        //     return 1;
+        // }
 
-        // check = this.filter_structure(work_targets, 'STRUCTURE_STORAGE', creep);
-        // if (check == 1){
-        //     return 1;
-        // }
-        sort = [];
-        for (let i = 0;i < work_targets.length;i++){
-            if (work_targets[i].structureType == STRUCTURE_STORAGE) {
-                // creep.memory.targetId = work_targets[i].id;
-                // return 1;
-                sort.push(work_targets[i]);
-            }
-        }
-        if (sort.length > 0){
-            let closest_structure = common.closest_structure(sort, creep);
-            creep.memory.targetId = closest_structure.id;
+        check = this.filter_structure(work_targets, 'storage', creep);
+        if (check == 1){
             return 1;
         }
+        // sort = [];
+        // for (let i = 0;i < work_targets.length;i++){
+        //     if (work_targets[i].structureType == STRUCTURE_STORAGE) {
+        //         // creep.memory.targetId = work_targets[i].id;
+        //         // return 1;
+        //         sort.push(work_targets[i]);
+        //     }
+        // }
+        // if (sort.length > 0){
+        //     let closest_structure = common.closest_structure(sort, creep);
+        //     creep.memory.targetId = closest_structure.id;
+        //     return 1;
+        // }
     },
     /**
      * find the closest structure with a designative type of the creep
