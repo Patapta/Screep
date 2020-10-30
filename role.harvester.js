@@ -16,12 +16,10 @@ var roleHarvester = {
         //when the creep have enough energy means that it should go to work
         if(creep.store[RESOURCE_ENERGY] == creep.store.getCapacity()){
             creep.memory.status = true;
-            // this.run(creep);
         }
         //when the creep don't have energy means that it should go to get energy
         if(creep.store[RESOURCE_ENERGY] == 0){
             creep.memory.status = false;
-            // this.run(creep);
         }
         switch (creep.memory.status) {
             case(false):
@@ -65,53 +63,53 @@ var roleHarvester = {
         for (let i = 0;i < work_targets.length;i++){
             if (work_targets[i].structureType == STRUCTURE_EXTENSION) {
                 creep.memory.targetId = work_targets[i].id;
-                return 1;
+                // return 1;
                 let sort = [];
                 sort.push(work_targets[i]);
                 let closest_structure = common.closest_structure(sort, creep);
                 console.log(closest_structure);
                 console.log(work_targets[i]);
                 // creep.memory.targetId = closest_structure.id;
-                // return 1;
+                return 1;
             }
         }
         for (let i = 0;i < work_targets.length;i++){
             if (work_targets[i].structureType == STRUCTURE_SPAWN) {
                 creep.memory.targetId = work_targets[i].id;
-                return 1;
+                // return 1;
                 let sort = [];
                 sort.push(work_targets[i]);
                 let closest_structure = common.closest_structure(sort, creep);
                 console.log(closest_structure);
                 console.log(work_targets[i]);
                 // creep.memory.targetId = closest_structure.id;
-                // return 1;
+                return 1;
             }
         }
         for (let i = 0;i < work_targets.length;i++){
             if (work_targets[i].structureType == STRUCTURE_TOWER) {
                 creep.memory.targetId = work_targets[i].id;
-                return 1;
+                // return 1;
                 let sort = [];
                 sort.push(work_targets[i]);
                 let closest_structure = common.closest_structure(sort, creep);
                 console.log(closest_structure);
                 console.log(work_targets[i]);
                 // creep.memory.targetId = closest_structure.id;
-                // return 1;
+                return 1;
             }
         }
         for (let i = 0;i < work_targets.length;i++){
             if (work_targets[i].structureType == STRUCTURE_STORAGE) {
                 creep.memory.targetId = work_targets[i].id;
-                return 1;
+                // return 1;
                 let sort = [];
                 sort.push(work_targets[i]);
                 let closest_structure = common.closest_structure(sort, creep);
                 console.log(closest_structure);
                 console.log(work_targets[i]);
                 // creep.memory.targetId = closest_structure.id;
-                // return 1;
+                return 1;
             }
         }
     },
