@@ -27,8 +27,8 @@ var common = {
         var min_distance = 100000;
         for (let i = 0;i < targets_Arr.length;i++){
             let distance = this.getDistanceByPos(creep.pos.x, creep.pos.y, targets_Arr[i].pos.x, targets_Arr[i].pos.y);
-            console.log(min_distance);
             if (distance < min_distance){
+                console.log(min_distance);
                 min_distance = distance;
                 console.log(min_distance);
                 result = targets_Arr[i];
