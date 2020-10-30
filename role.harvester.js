@@ -75,19 +75,19 @@ var roleHarvester = {
             return 1;
         }
 
-        var sort = [];
-        for (let i = 0;i < work_targets.length;i++){
-            if (work_targets[i].structureType == STRUCTURE_EXTENSION) {
-                // creep.memory.targetId = work_targets[i].id;
-                // return 1;
-                sort.push(work_targets[i]);
-            }
-        }
-        if (sort.length > 0){
-            let closest_structure = common.closest_structure(sort, creep);
-            creep.memory.targetId = closest_structure.id;
-            return 1;
-        }
+        // var sort = [];
+        // for (let i = 0;i < work_targets.length;i++){
+        //     if (work_targets[i].structureType == STRUCTURE_EXTENSION) {
+        //         // creep.memory.targetId = work_targets[i].id;
+        //         // return 1;
+        //         sort.push(work_targets[i]);
+        //     }
+        // }
+        // if (sort.length > 0){
+        //     let closest_structure = common.closest_structure(sort, creep);
+        //     creep.memory.targetId = closest_structure.id;
+        //     return 1;
+        // }
 
         // check = this.filter_structure(work_targets, 'STRUCTURE_SPAWN', creep);
         // if (check == 1){
