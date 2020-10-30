@@ -8,6 +8,11 @@ var common = require('common');
 var roleHarvester = {
 
     /** @param {Creep} creep **/
+    /**
+     * the work function of each creep
+     * @param creep
+     * @param structures all the structures in the room
+     */
     run: function(creep, structures) {
         //status is null when the creep is born, defined its status be false make it get the source
         if(typeof creep.memory.status == null){
@@ -57,62 +62,111 @@ var roleHarvester = {
                 }
         }
 	},
-    //ergod all the structure and charge them in order
+    /**
+     * ergod all the structure and charge them in order
+     * @param work_targets
+     * @param creep
+     * @returns {number}
+     */
     charge_order : function (work_targets, creep) {
         //charge order extension>spawn>tower>storage
-        var sort = [];
-        for (let i = 0;i < work_targets.length;i++){
-            if (work_targets[i].structureType == STRUCTURE_EXTENSION) {
-                // creep.memory.targetId = work_targets[i].id;
-                // return 1;
-                sort.push(work_targets[i]);
-            }
-        }
-        if (sort.length > 0){
-            let closest_structure = common.closest_structure(sort, creep);
-            creep.memory.targetId = closest_structure.id;
+        let check = this.filter_structure(work_targets, 'STRUCTURE_EXTENSION', creep);
+        if (check == 1){
             return 1;
         }
-        sort = [];
-        for (let i = 0;i < work_targets.length;i++){
-            if (work_targets[i].structureType == STRUCTURE_SPAWN) {
-                // creep.memory.targetId = work_targets[i].id;
-                // return 1;
-                sort.push(work_targets[i]);
-            }
-        }
-        if (sort.length > 0){
-            let closest_structure = common.closest_structure(sort, creep);
-            creep.memory.targetId = closest_structure.id;
+
+        // var sort = [];
+        // for (let i = 0;i < work_targets.length;i++){
+        //     if (work_targets[i].structureType == STRUCTURE_EXTENSION) {
+        //         // creep.memory.targetId = work_targets[i].id;
+        //         // return 1;
+        //         sort.push(work_targets[i]);
+        //     }
+        // }
+        // if (sort.length > 0){
+        //     let closest_structure = common.closest_structure(sort, creep);
+        //     creep.memory.targetId = closest_structure.id;
+        //     return 1;
+        // }
+
+        check = this.filter_structure(work_targets, 'STRUCTURE_SPAWN', creep);
+        if (check == 1){
             return 1;
         }
-        sort = [];
-        for (let i = 0;i < work_targets.length;i++){
-            if (work_targets[i].structureType == STRUCTURE_TOWER) {
-                // creep.memory.targetId = work_targets[i].id;
-                // return 1;
-                sort.push(work_targets[i]);
-            }
-        }
-        if (sort.length > 0){
-            let closest_structure = common.closest_structure(sort, creep);
-            creep.memory.targetId = closest_structure.id;
+        // sort = [];
+        // for (let i = 0;i < work_targets.length;i++){
+        //     if (work_targets[i].structureType == STRUCTURE_SPAWN) {
+        //         // creep.memory.targetId = work_targets[i].id;
+        //         // return 1;
+        //         sort.push(work_targets[i]);
+        //     }
+        // }
+        // if (sort.length > 0){
+        //     let closest_structure = common.closest_structure(sort, creep);
+        //     creep.memory.targetId = closest_structure.id;
+        //     return 1;
+        // }
+
+        check = this.filter_structure(work_targets, 'STRUCTURE_TOWER', creep);
+        if (check == 1){
             return 1;
         }
-        sort = [];
-        for (let i = 0;i < work_targets.length;i++){
-            if (work_targets[i].structureType == STRUCTURE_STORAGE) {
-                // creep.memory.targetId = work_targets[i].id;
-                // return 1;
-                sort.push(work_targets[i]);
-            }
-        }
-        if (sort.length > 0){
-            let closest_structure = common.closest_structure(sort, creep);
-            creep.memory.targetId = closest_structure.id;
+        // sort = [];
+        // for (let i = 0;i < work_targets.length;i++){
+        //     if (work_targets[i].structureType == STRUCTURE_TOWER) {
+        //         // creep.memory.targetId = work_targets[i].id;
+        //         // return 1;
+        //         sort.push(work_targets[i]);
+        //     }
+        // }
+        // if (sort.length > 0){
+        //     let closest_structure = common.closest_structure(sort, creep);
+        //     creep.memory.targetId = closest_structure.id;
+        //     return 1;
+        // }
+
+        check = this.filter_structure(work_targets, 'STRUCTURE_STORAGE', creep);
+        if (check == 1){
             return 1;
         }
+        // sort = [];
+        // for (let i = 0;i < work_targets.length;i++){
+        //     if (work_targets[i].structureType == STRUCTURE_STORAGE) {
+        //         // creep.memory.targetId = work_targets[i].id;
+        //         // return 1;
+        //         sort.push(work_targets[i]);
+        //     }
+        // }
+        // if (sort.length > 0){
+        //     let closest_structure = common.closest_structure(sort, creep);
+        //     creep.memory.targetId = closest_structure.id;
+        //     return 1;
+        // }
     },
+    /**
+     * find the closest structure with a designative type of the creep
+     * @param work_targets  the array of all the structures
+     * @param type  the type of structure
+     * @param creep the creep
+     * @returns {number} 1 means find the closest structure it want, 0 means there is no such a structure with the designative type
+     */
+    filter_structure : function (work_targets, type, creep) {
+        let sort;
+        for (let i = 0;i < work_targets.length;i++){
+            if (work_targets[i].structureType == type) {
+                // creep.memory.targetId = work_targets[i].id;
+                // return 1;
+                sort.push(work_targets[i]);
+            }
+        }
+        if (sort.length > 0){
+            let closest_structure = common.closest_structure(sort, creep);
+            creep.memory.targetId = closest_structure.id;
+            return 1;
+        }else {
+            return 0;
+        }
+    }
 };
 
 module.exports = roleHarvester;
