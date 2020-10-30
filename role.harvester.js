@@ -70,10 +70,10 @@ var roleHarvester = {
      */
     charge_order : function (work_targets, creep) {
         // charge order extension>spawn>tower>storage
-        // let check = this.filter_structure(work_targets, 'STRUCTURE_EXTENSION', creep);
-        // if (check == 1){
-        //     return 1;
-        // }
+        let check = this.filter_structure(work_targets, 'STRUCTURE_EXTENSION', creep);
+        if (check == 1){
+            return 1;
+        }
 
         var sort = [];
         for (let i = 0;i < work_targets.length;i++){
@@ -154,8 +154,7 @@ var roleHarvester = {
         let sort = [];
         for (let i = 0;i < work_targets.length;i++){
             if (work_targets[i].structureType == type) {
-                // creep.memory.targetId = work_targets[i].id;
-                // return 1;
+                console.log(123);
                 sort.push(work_targets[i]);
             }
         }
