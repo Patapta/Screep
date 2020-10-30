@@ -66,10 +66,15 @@ var roleHarvester = {
                 // return 1;
                 let sort = [];
                 sort.push(work_targets[i]);
-                let closest_structure = common.closest_structure(sort, creep);
-                creep.memory.targetId = closest_structure.id;
-                return 1;
+                // let closest_structure = common.closest_structure(sort, creep);
+                // creep.memory.targetId = closest_structure.id;
+                // return 1;
             }
+        }
+        if (sort.length > 0){
+            let closest_structure = common.closest_structure(sort, creep);
+            creep.memory.targetId = closest_structure.id;
+            return 1;
         }
         for (let i = 0;i < work_targets.length;i++){
             if (work_targets[i].structureType == STRUCTURE_SPAWN) {
