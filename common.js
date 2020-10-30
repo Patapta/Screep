@@ -34,3 +34,4 @@ var common = {
         return result;
     }
 }
+module.exports = common;
