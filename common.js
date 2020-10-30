@@ -23,12 +23,13 @@ var common = {
      * @returns {number} return the closest structure by distance with the creep
      */
     closest_structure : function (targets_Arr, creep) {
-        let distance = 0,
+        let min_distance = 100000,
             result = targets_Arr[0];
         for (let i = 0;i < targets_Arr.length;i++){
-            distance = this.getDistanceByPos(creep.pos.x, creep.pos.y, targets_Arr[i].pos.x, targets_Arr[i].pos.y);
+            let distance = this.getDistanceByPos(creep.pos.x, creep.pos.y, targets_Arr[i].pos.x, targets_Arr[i].pos.y);
             console.log(distance);
-            if (distance > result){
+            if (distance < min_distance){
+                min_distance = distance;
                 result = targets_Arr[i];
             }
         }
