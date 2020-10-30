@@ -2,7 +2,7 @@
  * harvester class
  * role.harvester 
  */
-
+var common = require('common');
 
 
 var roleHarvester = {
@@ -67,6 +67,12 @@ var roleHarvester = {
             if (work_targets[i].structureType == STRUCTURE_EXTENSION) {
                 creep.memory.targetId = work_targets[i].id;
                 return 1;
+                let sort = [];
+                sort.push(work_targets[i]);
+                let closest_structure = common.closest_structure(sort, creep);
+                console.log(closest_structure);
+                // creep.memory.targetId = closest_structure.id;
+                // return 1;
             }
         }
         for (let i = 0;i < work_targets.length;i++){
@@ -87,7 +93,7 @@ var roleHarvester = {
                 return 1;
             }
         }
-    }
+    },
 };
 
 module.exports = roleHarvester;
