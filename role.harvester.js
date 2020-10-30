@@ -151,7 +151,7 @@ var roleHarvester = {
      * @returns {number} 1 means find the closest structure it want, 0 means there is no such a structure with the designative type
      */
     filter_structure : function (work_targets, type, creep) {
-        let sort;
+        let sort = [];
         for (let i = 0;i < work_targets.length;i++){
             if (work_targets[i].structureType == type) {
                 // creep.memory.targetId = work_targets[i].id;
