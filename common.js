@@ -11,7 +11,7 @@ var common = {
      * @param by  pos.y of coordinateB
      * @returns {number} return the distance of A and B
      */
-    getDistanceByPos(ax, ay, bx, by){
+    getDistanceByPos : function (ax, ay, bx, by){
         let distance = Math.pow(ax-bx,2)+Math.pow(ay-by,2);
         return distance;
     },
