@@ -78,8 +78,8 @@ var roleHarvester = {
         }
         for (let i = 0;i < work_targets.length;i++){
             if (work_targets[i].structureType == STRUCTURE_SPAWN) {
-                // creep.memory.targetId = work_targets[i].id;
-                // return 1;
+                creep.memory.targetId = work_targets[i].id;
+                return 1;
                 var sort = [];
                 sort.push(work_targets[i]);
                 // let closest_structure = common.closest_structure(sort, creep);
