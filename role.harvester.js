@@ -23,7 +23,6 @@ var roleHarvester = {
             creep.memory.status = false;
             // this.run(creep);
         }
-        console.log(creep.pos);
         switch (creep.memory.status) {
             case(false):
             default:
