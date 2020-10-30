@@ -153,9 +153,7 @@ var roleHarvester = {
     filter_structure : function (work_targets, type, creep) {
         let sort = [];
         for (let i = 0;i < work_targets.length;i++){
-            console.log(work_targets[i].structureType);
             if (work_targets[i].structureType == type) {
-                console.log(123);
                 sort.push(work_targets[i]);
             }
         }
