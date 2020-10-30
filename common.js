@@ -30,6 +30,7 @@ var common = {
             console.log(min_distance);
             if (distance < min_distance){
                 min_distance = distance;
+                console.log(min_distance);
                 result = targets_Arr[i];
             }
         }
