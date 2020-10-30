@@ -24,21 +24,14 @@ var common = {
      */
     closest_structure : function (targets_Arr, creep) {
         let result = targets_Arr[0];
-        var min_distance = 100000;
-        console.log(123);
-        console.log(targets_Arr.length);
+        var min_distance = 99999;
         for (let i = 0;i < targets_Arr.length;i++){
             let distance = this.getDistanceByPos(creep.pos.x, creep.pos.y, targets_Arr[i].pos.x, targets_Arr[i].pos.y);
-            console.log(min_distance);
-            console.log(1);
-            console.log(distance);
-            console.log(2);
             if (distance < min_distance){
                 min_distance = distance;
                 result = targets_Arr[i];
             }
         }
-        console.log(123);
         return result;
     }
 }

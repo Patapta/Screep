@@ -66,9 +66,6 @@ var roleHarvester = {
                 // creep.memory.targetId = work_targets[i].id;
                 // return 1;
                 sort.push(work_targets[i]);
-                // let closest_structure = common.closest_structure(sort, creep);
-                // creep.memory.targetId = closest_structure.id;
-                // return 1;
             }
         }
         if (sort.length > 0){
@@ -82,9 +79,6 @@ var roleHarvester = {
                 // creep.memory.targetId = work_targets[i].id;
                 // return 1;
                 sort.push(work_targets[i]);
-                // let closest_structure = common.closest_structure(sort, creep);
-                // creep.memory.targetId = closest_structure.id;
-                // return 1;
             }
         }
         if (sort.length > 0){
@@ -98,9 +92,6 @@ var roleHarvester = {
                 // creep.memory.targetId = work_targets[i].id;
                 // return 1;
                 sort.push(work_targets[i]);
-                // let closest_structure = common.closest_structure(sort, creep);
-                // creep.memory.targetId = closest_structure.id;
-                // return 1;
             }
         }
         if (sort.length > 0){
@@ -114,9 +105,6 @@ var roleHarvester = {
                 // creep.memory.targetId = work_targets[i].id;
                 // return 1;
                 sort.push(work_targets[i]);
-                // let closest_structure = common.closest_structure(sort, creep);
-                // creep.memory.targetId = closest_structure.id;
-                // return 1;
             }
         }
         if (sort.length > 0){
