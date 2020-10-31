@@ -29,9 +29,12 @@ var roleHarvester = {
         switch (creep.memory.status) {
             case(false):
             default:
-                let source_target = Game.getObjectById(creep.pos.findClosestByRange(FIND_SOURCES_ACTIVE).id);
-                if(creep.harvest(source_target)== ERR_NOT_IN_RANGE) {
-                    creep.moveTo(source_target, {visualizePathStyle: {stroke: '#ffffff'}});
+                let source_active = creep.pos.findClosestByRange(FIND_SOURCES_ACTIVE);
+                if (source_active != null){
+                    let source_target = Game.getObjectById(source_active.id);
+                    if(creep.harvest(source_target)== ERR_NOT_IN_RANGE) {
+                        creep.moveTo(source_target, {visualizePathStyle: {stroke: '#ffffff'}});
+                    }
                 }
                 break;
             case(true):
